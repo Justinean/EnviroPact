@@ -44,6 +44,10 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
+userSchema.virtual('companyCount').get(function () {
+  return this.savedCompanies.length;
+});
+
 const User = model('User', userSchema);
 
 module.exports = User;
