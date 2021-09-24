@@ -9,7 +9,7 @@ const typeDefs = gql`
     savedCompanies: [Company]!
   }
   type Company {
-    esg_id: ID
+    esgId: ID
     companyName: String
     exchangeSymbol: String
     stockSymbol: String
@@ -27,6 +27,9 @@ const typeDefs = gql`
     governanceScore: Int
     total: Int
     goals: [Goals]!
+  }
+  type Goals {
+
   }
   
 `;
