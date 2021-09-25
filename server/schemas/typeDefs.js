@@ -57,5 +57,6 @@ const typeDefs = gql`
     createUser(username: String!, email: String!, password: String!): Auth
     followCompany(companyId: ID, companyName: String, exchangeSymbol: String, stockSymbol: String, environmentGrade: String, environmentLevel: String, socialGrade: String, socialLevel: String, governanceGrade: String, governanceLevel: String,totalGrade: String, totalLevel: String, lastProcessingDate: String, environmentScore: Int, socialScore: Int, governanceScore: Int, total: Int): User
     unfollowCompany(companyId: ID): User
-  }
-`;
+  }`
+
+module.exports = typeDefs;
