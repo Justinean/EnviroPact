@@ -87,18 +87,7 @@ const SignupForm = (props) => {
                     helperText= {errorMessagePassword}
                     type='password'
                 />                                
-                {/* <TextField 
-                    onChange = {(e) => setUserPassword(e.target.value)}
-                    label='password'
-                    value= {userPassword}
-                    varient='outlined'
-                    fullWidth
-                    required
-                    error= {passwordError}
-                    onblur={handlePasswordBlur}
-                    type='password'
-                    helperText = {errorMessagePassword}
-                />  */}
+
 
                 <Button
                 onClick=''
