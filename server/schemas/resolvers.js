@@ -32,7 +32,7 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        saveBook: async (parent, args, {user}) => {
+        followCompany: async (parent, args, {user}) => {
             try {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: user._id },
@@ -44,5 +44,6 @@ const resolvers = {
                 return err
             }
         },
+        
     }
 }
