@@ -59,5 +59,3 @@ const typeDefs = gql`
     unfollowCompany(companyId: ID): User
   }
 `;
-
-module.exports = typeDefs;
