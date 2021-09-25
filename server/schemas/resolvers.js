@@ -7,4 +7,20 @@ const resolvers = {
             return User.findOne({ _id: user._id}).populate('savedCompanies')
         }
     },
+    Mutation: {
+        login: async (parent, args) => {
+            const user = await User.findOne({ email: args.email });
+            if (!user) {
+                return { message: "Can't find this user" };
+            }
+
+            const correctPw = await user.isCorrectPassword(args.password);
+
+            if (!correctPw) {
+                return { message: 'Wrong password!' };
+            }
+            const token = signToken(user);
+            return { token, user };
+        },
+    }
 }
