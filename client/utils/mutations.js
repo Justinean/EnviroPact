@@ -27,3 +27,45 @@ export const LOGIN = gql`
     }
   }
 `
+
+export const FOLLOW_COMPANY = gql`
+  mutation followCompany($companyId: ID, $companyName: String, $exchangeSymbol: String, $stockSymbol: String, $environmentGrade: String, $environmentLevel: String, $socialGrade: String, $socialLevel: String, $governanceGrade: String, $governanceLevel: String, $totalGrade: String, $totalLevel: String, $lastProcessingDate: String, $environmentScore: Int, $socialScore: Int, $governanceScore: Int, $total: Int) {
+    followCompany(companyId: $companyId, companyName: $companyName, exchangeSymbol: $exchangeSymbol, stockSymbol: $stockSymbol, environmentGrade: $environmentGrade, environmentLevel: $environmentLevel, socialGrade: $socialGrade, socialLevel: $socialLevel, governanceGrade: $governanceGrade, governanceLevel: $governanceLevel, totalGrade: $totalGrade, totalLevel: $totalLevel, lastProcessingDate: $lastProcessingDate, environmentScore: $environmentScore, socialScore: $socialScore, governanceScore: $governanceScore, total: $total) {
+      _id
+      username
+      email
+      companyCount
+      savedCompanies {
+        companyId
+        companyName
+        exchangeSymbol
+        stockSymbol
+        environmentGrade
+        environmentLevel
+        socialGrade
+        socialLevel
+        governanceGrade
+        governanceLevel
+        totalGrade
+        totalLevel
+        lastProcessingDate
+        environmentScore
+        socialScore
+        governanceScore
+        total
+        goals {
+          goalsId
+          companyName
+          exchangeSymbol
+          stockSymbol
+          goalsDetails {
+            timestamp
+            score
+            sasb
+            sdg
+          }
+        } 
+      }
+    }
+  }
+`
