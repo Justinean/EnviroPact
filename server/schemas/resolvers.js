@@ -22,5 +22,15 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+        createUser: async (parent, args) => {
+            const user = await User.create(args);
+
+            if (!user) {
+                return { message: 'Something is wrong!' };
+            }
+
+            const token = signToken(user);
+            return { token, user };
+        },
     }
 }
