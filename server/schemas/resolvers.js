@@ -44,6 +44,16 @@ const resolvers = {
                 return err
             }
         },
-        
+        unfollowCompany: async (parent, args, {user}) => {
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: user._id },
+                { $pull: { savedCompanies: { companyId: args.companyId } } },
+                { new: true }
+            );
+            if (!updatedUser) {
+                return { message: "Couldn't find user with this id!" };
+            }
+            return updatedUser;
+        }
     }
 }
