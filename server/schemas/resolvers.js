@@ -33,16 +33,15 @@ const resolvers = {
             return { token, user };
         },
         followCompany: async (parent, args, {user}) => {
-            try {
-                const updatedUser = await User.findOneAndUpdate(
-                    { _id: user._id },
-                    { $addToSet: { savedCompanies: args } },
-                    { new: true, runValidators: true }
-                );
-                return updatedUser;
-            } catch (err) {
-                return err
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: user._id },
+                { $addToSet: { savedCompanies: args } },
+                { new: true, runValidators: true }
+            );
+            if (!updatedUser) {
+                return { message: "User is not logged in!" };
             }
+            return updatedUser;
         },
         unfollowCompany: async (parent, args, {user}) => {
             const updatedUser = await User.findOneAndUpdate(
@@ -51,7 +50,7 @@ const resolvers = {
                 { new: true }
             );
             if (!updatedUser) {
-                return { message: "Couldn't find user with this id!" };
+                return { message: "User is not logged in!" };
             }
             return updatedUser;
         }
