@@ -27,8 +27,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-//links:
-//contributors
-//dashboard
-//landing (home)

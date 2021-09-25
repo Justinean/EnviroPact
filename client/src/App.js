@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
+import Searchbar from './components/Seachbar';
 import Dashboard from './pages/Dashboard';
 import Landing from './pages/Landing';
 import Contributors from './pages/Contributors';
@@ -21,6 +22,7 @@ function App() {
         <div className="App">
           <Header />
           <Navbar />
+          <Searchbar />
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/dashboard" component={Dashboard} />
