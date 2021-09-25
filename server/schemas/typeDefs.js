@@ -26,15 +26,22 @@ const typeDefs = gql`
     socialScore: Int
     governanceScore: Int
     total: Int
-    /* goals: [Goals]! */
+    goals: [Goals]!
   }
-  /* type Goals {
+  type Goals {
     goalsId: ID
     companyName: String
     exchangeSymbol: String
     stockSymbol: String
-    goals
-  } need to talk to Charlie about this one */
+    goalsDetails: [Details]!
+  } 
+
+  type Details {
+    timestamp: String
+    score: Int
+    sasb: String
+    sdg: String
+  }
 
   type Auth {
     token: ID!
