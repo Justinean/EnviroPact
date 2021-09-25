@@ -20,7 +20,6 @@ const resolvers = {
                 return { message: 'Wrong password!' };
             }
             const token = signToken(user);
-            console.log(token)
             return { token, user };
         },
         createUser: async (parent, args) => {
@@ -31,7 +30,6 @@ const resolvers = {
             }
 
             const token = signToken(user);
-            console.log(token)
             return { token, user };
         },
         followCompany: async (parent, args, {user}) => {
