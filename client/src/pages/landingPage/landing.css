@@ -2,7 +2,7 @@
    --primary: #415D43;
    --dark: #111D13;
    --light: #1E91D6;
-   --light-secondary: #CED0CE;
+   --light-secondary: snow;
    --secondary: #E18335;
 
 
@@ -15,17 +15,19 @@ body {
 .main-container {
     display:flex;
     flex-direction: column;
+    
 }
 
 .card {
     background-color: var(--primary);
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: flex-end;
     width: 50%;
     margin-right: 2%;
     margin-left: 2%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    border: 2px solid white;
 }
 
 .box {
