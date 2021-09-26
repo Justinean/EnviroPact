@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { Container, Button, TextField, Typography} from '@mui/material'
-import { KeyboardArrowRight } from '@mui/icons-material'
+import { Container, Button, TextField, Typography} from '@mui/material';
+import { KeyboardArrowRight } from '@mui/icons-material';
+import {useMutation} from '@apollo/client';
+
+import {CREATE_USER} from '../utils/mutations';
+import Auth from '../utils/auth';
 
 // TODO: add handleFormSubmit and handleInputChange, will need utils for this to check if working
 
 const SignupForm = (props) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [userPassword, setUserPassword] = useState(''); 
+    const [password, setPassword] = useState(''); 
 
     const [usernameError, setUsernameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
@@ -16,6 +20,8 @@ const SignupForm = (props) => {
     const [errorMessageUsername, setErrorMessageUsername] = useState('');
     const [errorMessageEmail, setErrorMessageEmail] = useState('');
     const [errorMessagePassword, setErrorMessagePassword] = useState('');
+
+    const [createUser, {error}] = useMutation(CREATE_USER);
 
     const handleUsernameBlur = () => {
         setUsernameError(false)
@@ -38,13 +44,28 @@ const SignupForm = (props) => {
     const handlePasswordBlur = () => {
         setPasswordError(false)
         setErrorMessagePassword('')
-        if (userPassword === '' ){
+        if (password === '' ){
             setPasswordError(true);
             setErrorMessagePassword('Password is required');
         }
     }
 
+    const handleFormSubmit = async e => {
+        e.preventDefault()
+        const userFormData = {username, email, password}
+        try {
+            const {data} = await createUser({variables: userFormData});
+            const {token, user} = data.createUser;
 
+            if (!token || !user) {
+                throw new Error('Something went wrong!');
+            }
+
+            Auth.login(token)
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
 
 
@@ -74,11 +95,11 @@ const SignupForm = (props) => {
                     error={emailError}
                     onBlur={handleEmailBlur}
                     helperText= {errorMessageEmail}
-                /> 
-                 <TextField
-                    onChange = {(e) => setUserPassword(e.target.value)}
+                />
+                <TextField
+                    onChange = {(e) => setPassword(e.target.value)}
                     label="password"
-                    value = {userPassword}
+                    value = {password}
                     varient="outlined"
                     fullWidth
                     required
@@ -86,11 +107,11 @@ const SignupForm = (props) => {
                     onBlur={handlePasswordBlur}
                     helperText= {errorMessagePassword}
                     type='password'
-                />                                
+                />
 
 
                 <Button
-                onClick=''
+                onClick={handleFormSubmit}
                 type='submit'
                 variant='contained'
                 endIcon={< KeyboardArrowRight />}
