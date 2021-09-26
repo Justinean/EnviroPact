@@ -1,6 +1,9 @@
 import React, { useState} from 'react';
 import { Container, Typography, Button, TextField } from '@mui/material';
-import { KeyboardArrowRight } from '@mui/icons-material'
+import { KeyboardArrowRight } from '@mui/icons-material';
+import {useMutation} from '@apollo/client';
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 /*
         TODO: 
@@ -12,13 +15,15 @@ import { KeyboardArrowRight } from '@mui/icons-material'
 
 const LoginForm = (props) => {
     const [email, setEmail] = useState('');
-    const [userPassword, setUserPassword] = useState(''); 
+    const [password, setPassword] = useState(''); 
 
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
 
     const [errorMessageEmail, setErrorMessageEmail] = useState('');
     const [errorMessagePassword, setErrorMessagePassword] = useState('');
+
+    const [login, {error}] = useMutation(LOGIN)
 
     const handleEmailBlur = () => {
         setEmailError(false)
@@ -32,9 +37,26 @@ const LoginForm = (props) => {
     const handlePasswordBlur = () => {
         setPasswordError(false)
         setErrorMessagePassword('')
-        if ( userPassword === '' ){
+        if ( password === '' ){
             setPasswordError(true);
             setErrorMessagePassword('Password is required');
+        }
+    }
+
+    const handleFormSubmit = async e => {
+        e.preventDefault();
+        const userFormData = {email, password}
+        try {
+            const {data} = await login({variables: userFormData});
+            const {token, user} = data.login;
+
+            if (!token || !user) {
+                throw new Error('Something went wrong!');
+            }
+
+            Auth.login(token)
+        } catch (err) {
+            console.error(err)
         }
     }
 
@@ -55,9 +77,9 @@ const LoginForm = (props) => {
                 />
                             
                 <TextField
-                    onChange = {(e) => setUserPassword(e.target.value)}
+                    onChange = {(e) => setPassword(e.target.value)}
                     label="password"
-                    value = {userPassword}
+                    value = {password}
                     varient="outlined"
                     fullWidth
                     required
@@ -68,7 +90,7 @@ const LoginForm = (props) => {
                 />  
 
                 <Button
-                onClick=''
+                onClick={handleFormSubmit}
                 type='submit'
                 variant='contained'
                 endIcon={< KeyboardArrowRight />}
