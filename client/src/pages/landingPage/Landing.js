@@ -16,6 +16,10 @@ import DataTable from '../../components/DataTable'
 
 
 const Landing = () => {
+  // const [childData, setChildData] = useState('');
+  // const passToParent = (childData) => {
+  //   setChildData(childData);
+  // }
   const data = [{
   
     "esg_id": 6909,
@@ -41,6 +45,7 @@ const Landing = () => {
 
 
   return (
+    // <p>This is the search query: {childData}</p>
     <ThemeProvider theme={darkTheme}>
     <Container className="main-container">
       <Box sx={{ mr: 25, ml: 25 }} className="box">
