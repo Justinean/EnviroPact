@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard';
-import Landing from './pages/Landing';
+import Landing from './pages/landingPage/Landing';
 import Contributors from './pages/Contributors';
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';

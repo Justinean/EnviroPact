@@ -1,0 +1,75 @@
+:root {
+   --primary: #415D43;
+   --dark: #111D13;
+   --light: #1E91D6;
+   --light-secondary: snow;
+   --secondary: #E18335;
+
+
+}
+body {
+    background-color: var(--light-secondary);
+}
+
+
+.main-container {
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.card {
+    background-color: var(--primary);
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 20px;
+    border: 2px solid white;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    background-color: var(--dark);
+    color: var(--light-secondary);
+
+}
+.mission-box {
+    display: flex;
+    background-color: var(--dark);
+    color: var(--light-secondary)
+}
+.enviro-header {
+    font-size: 2.5em;
+    margin-right: 4%;
+    margin-left: 2%;
+}
+
+.enviro-para {
+    display: flex;
+    margin-top: 7%;
+    margin-right: 7%;
+    text-align: left;
+}
+.chart-container {
+    margin-top: 100px;
+    margin-left: 10%;
+
+}
+
+.sample-chart-h3 {
+    font-size: 2.5em;
+    text-align: left;
+}
+.chart-box {
+    margin-left: 10%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
