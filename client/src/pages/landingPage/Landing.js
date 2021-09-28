@@ -15,6 +15,26 @@ import Searchbar from '../../components/Searchbar';
 import { mainApiSearch } from '../../utils/API';
 
 const Landing = () => {
+  // dummy data
+  const data = {
+    companyId: 6909,
+    companyName: "Target Corporation",
+    exchangeSymbol: "NYSE",
+    stockSymbol: "TGT",
+    environmentGrade: "A",
+    environmentLevel: "Medium",
+    socialGrade: "BBB",
+    socialLevel: "Medium",
+    governanceGrade: "BBB",
+    governanceLevel: "Medium",
+    totalGrade: "BBB",
+    totalLevel: "Excellent",
+    lastProcessingDate: "14-09-2021",
+    environmentScore: 500,
+    socialScore: 337,
+    governanceScore: 320,
+    total: 1157,
+  };
   // State that holds the API call that comes in from the searchbar.
   const [apiSearchData, setApiSearchData] = useState('');
   // The function that will take the input from the searchbar and update the state for the landing API call.
@@ -23,24 +43,24 @@ const Landing = () => {
   };
 
   // This is the state that will hold the data from the API call.
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   // This function will run the API call and set state of the data.
   const handleSearch = async (event) => {
     event.preventDefault();
-    if (!apiSearchData) {
+    /* if (!apiSearchData) {
       return false;
-    }
+    } */
 
     try {
-      const response = await mainApiSearch(apiSearchData[0]);
+      /* const response = await mainApiSearch(apiSearchData[0]);
       if (!response.ok) {
         throw new Error('Something went wrong with the search.');
       }
 
       const jsonData = await response.json();
-      const company = jsonData[0];
-      const companyData = {
+      const company = jsonData[0]; */
+      /* const companyData = {
         companyId: company.esg_id,
         companyName: company.company_name,
         exchangeSymbol: company.exchange_symbol,
@@ -58,9 +78,9 @@ const Landing = () => {
         socialScore: company.social_score,
         governanceScore: company.governance_score,
         total: company.total,
-      };
+      }; */
 
-      setData(companyData);
+      // setData(companyData);
     } catch (err) {
       console.error(err);
     }
