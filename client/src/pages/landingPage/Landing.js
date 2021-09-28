@@ -1,81 +1,104 @@
-// This is the initial page for the website aka (The home page?)
-
-import React from 'react';
-import CustomCharts from '../../components/CompanyChart'
+import React, { useState } from 'react';
+import CustomCharts from '../../components/CompanyChart';
 import {
   ThemeProvider,
   Container,
   Card,
   Box,
-} from '@mui/material'
+  Button,
+} from '@mui/material';
 
-import darkTheme from '../../assets/themes/DarkTheme'
-import './landing.css'
-import DataTable from '../../components/DataTable'
-
-
+import darkTheme from '../../assets/themes/DarkTheme';
+import './landing.css';
+import DataTable from '../../components/DataTable';
+import Searchbar from '../../components/Searchbar';
+import { mainApiSearch } from '../../utils/API';
 
 const Landing = () => {
-  // const [childData, setChildData] = useState('');
-  // const passToParent = (childData) => {
-  //   setChildData(childData);
-  // }
-  const data = [{
-  
-    "esg_id": 6909,
-    "company_name": "Target Corporation",
-    "exchange_symbol": "NYSE",
-    "stock_symbol": "TGT",
-    "environment_grade": "A",
-    "environment_level": "Medium",
-    "social_grade": "BBB",
-    "social_level": "Medium",
-    "governance_grade": "BBB",
-    "governance_level": "Medium",
-    "total_grade": "BBB",
-    "total_level": "Excellent",
-    "disclaimer": "ESG Enterprise's ESG Rating data (\"Scores\") are all based on public information and provided for informational purposes only. No member of ESG Enterprise or related parties make any prediction, warranty or representation whatsoever, expressly or impliedly, either as to the suitability of our Scores for any particular purposes or the validity of any derivative analysis or conclusion based on the Scores.",
-    "last_processing_date": "14-09-2021",
-    "environment_score": 500,
-    "social_score": 337,
-    "governance_score": 320,
-    "total": 1157
-  
-}]
+  // State that holds the API call that comes in from the searchbar.
+  const [apiSearchData, setApiSearchData] = useState('');
+  // The function that will take the input from the searchbar and update the state for the landing API call.
+  const sbDataFunction = (sbData) => {
+    setApiSearchData(sbData);
+  };
 
+  // This is the state that will hold the data from the API call.
+  const [data, setData] = useState([]);
+
+  // This function will run the API call and set state of the data.
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    if (!apiSearchData) {
+      return false;
+    }
+
+    try {
+      const response = await mainApiSearch(apiSearchData[0]);
+      if (!response.ok) {
+        throw new Error('Something went wrong with the search.');
+      }
+
+      const jsonData = await response.json();
+      const company = jsonData[0];
+      const companyData = {
+        companyId: company.esg_id,
+        companyName: company.company_name,
+        exchangeSymbol: company.exchange_symbol,
+        stockSymbol: company.stock_symbol,
+        environmentGrade: company.environment_grade,
+        environmentLevel: company.environment_level,
+        socialGrade: company.social_grade,
+        socialLevel: company.social_level,
+        governanceGrade: company.governance_grade,
+        governanceLevel: company.governance_level,
+        totalGrade: company.total_grade,
+        totalLevel: company.total_level,
+        lastProcessingDate: company.last_processing_date,
+        environmentScore: company.environment_score,
+        socialScore: company.social_score,
+        governanceScore: company.governance_score,
+        total: company.total,
+      };
+
+      setData(companyData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
-    // <p>This is the search query: {childData}</p>
     <ThemeProvider theme={darkTheme}>
-    <Container className="main-container">
-      <Box sx={{ mr: 25, ml: 25 }} className="box">
-        <Box className="card">
-        <h3 className="enviro-header"> EnviroPact: </h3>
+      <Container className="main-container">
+        <Box sx={{ mr: 25, ml: 25 }} className="box">
+          <Box className="card">
+            <h3 className="enviro-header"> EnviroPact: </h3>
 
-        <p className="enviro-para"> a pact to improve our environment, economy, and society by holding businesses, corporations, and governments accountable for their actions and damages. Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
+            <p className="enviro-para"> a pact to improve our environment, economy, and society by holding businesses, corporations, and governments accountable for their actions and damages. Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
+          </Box>
         </Box>
-      </Box> 
-      <Box sx={{ mr: 25, ml: 25 }} className="mission-box">
-        <Box className="card">
-        <h3 className="enviro-header"> Mission: </h3>
+        <Box sx={{ mr: 25, ml: 25 }} className="mission-box">
+          <Box className="card">
+            <h3 className="enviro-header"> Mission: </h3>
 
-        <p className="enviro-para"> Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
+            <p className="enviro-para"> Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
+          </Box>
         </Box>
-      </Box>   
-      <Container className="chart-container">
+        <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
+        <Searchbar sbDataFunction={sbDataFunction} />
+        <Button onClick={handleSearch}>Search</Button>
+        <Container className="chart-container">
 
-      <Box className="chart-box">     
-      <CustomCharts data={data}/>
-      </Box>
+          <Box className="chart-box">
+            <CustomCharts data={data} />
+          </Box>
+        </Container>
+        <Container style={{ marginTop: '300px' }}>
+          <Box>
+            <DataTable data={data} />
+          </Box>
+        </Container>
+
       </Container>
-      <Container style={{marginTop: '300px'}}>
-        <Box>
-      <DataTable data={data}/>
- 
-        </Box>
-      </Container>
-
-    </Container>
 
     </ThemeProvider>
 
