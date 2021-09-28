@@ -62,7 +62,7 @@ const LoginForm = (props) => {
 
     return (
         <Container>
-            <h2> Login </h2> 
+            <h2> Log In </h2> 
             <form noValidate autoComplete="off">
                 <TextField
                     onChange = {(e) => setEmail(e.target.value)}
