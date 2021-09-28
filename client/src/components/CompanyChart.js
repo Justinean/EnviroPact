@@ -4,16 +4,16 @@ import { Doughnut } from "react-chartjs-2";
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 
-export default function CustomCharts(props) {
+export default function CustomCharts({ data }) {
 
   const [chartData, setChartData] = useState();
   const [score, setScore] = useState([])
-  // setScore.push(props.data[0].environment_score, props.data[0].social_score, props.data[0].governance_score );
+  // setScore.push(data.environmentScore, data.socialScore, data.governanceScore );
 // setScore
 
   useEffect(() => {
     let newScore = []
-    newScore.push(props.data[0].environment_score, props.data[0].social_score, props.data[0].governance_score );
+    newScore.push(data.environmentScore, data.socialScore, data.governanceScore );
     setScore(newScore)
 
     const newChart = {
@@ -38,7 +38,7 @@ export default function CustomCharts(props) {
     } 
       setChartData(newChart)
 
-  }, [setScore, props])
+  }, [setScore, data])
 
  
 
@@ -49,7 +49,7 @@ export default function CustomCharts(props) {
         width: 400,
         height: 200,
       }}>
-        <h1>{props.data[0].company_name}</h1>
+        <h1>{data.companyName}</h1>
         <Typography variant="h6">ESG Scores</Typography>
       <Doughnut
         data={chartData}
