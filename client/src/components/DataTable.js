@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { Table, TableHead, TableBody, TableRow, TableCell, TableContainer } from '@mui/material'
 
-export default function DataTable() {
+export default function DataTable(props) {
 
     function createData(enviroGrade, enviroScore, socialGrade, socialScore, govGrade, goveScore) {
         return { enviroGrade, enviroScore, socialGrade, socialScore, govGrade, goveScore };
@@ -20,7 +20,7 @@ export default function DataTable() {
             <Table>
                 <TableHead>
                     <h1>Company Name</h1>
-                    <TableRow>
+                    <TableRow style={{backgroundColor: 'orange'}}>
                         <TableCell />
                         <TableCell> Score </TableCell>
                         <TableCell> Grade </TableCell>
