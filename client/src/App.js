@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
+import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Landing from './pages/landingPage/Landing';
 import Contributors from './pages/Contributors';
@@ -19,13 +20,13 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="App">
-          <Header />
-          <Navbar />
+          <Layout>
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/contributors" component={Contributors} />
           </Switch>
+          </Layout>
         </div>
       </Router>
     </ApolloProvider>

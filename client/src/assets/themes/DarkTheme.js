@@ -9,6 +9,9 @@ const secondaryDark = "#1E91D6";
 
 const contrastTextLight = "#ffffff";
 
+// bp added iconMain and icon below. Tried to use existing for nav but couldn't figure it out 
+const iconMain = "#CED0CE"
+
 const darkTheme = createMuiTheme({
   palette: {
     primary: {
@@ -20,6 +23,9 @@ const darkTheme = createMuiTheme({
     secondary: {
       main: secondaryMain,
       dark: secondaryDark
+    },
+    icon:{
+      main:iconMain
     },
     type: "dark"
   },
