@@ -1,16 +1,3 @@
-import {
-  createStyles,
-  // fade,
-  Theme,
-  makeStyles,
-} from '@mui/styles'
-import { companySearchData } from './stockData';
-import { Autocomplete, InputAdornment } from '@mui/material';
-import { TextField } from '@mui/material';
-import { IconButton } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import { useState } from 'react';
-
 // const useStyles = makeStyles((theme: Theme) =>
 //   createStyles({
 //     search: {
@@ -54,29 +41,62 @@ import { useState } from 'react';
 //   })
 // );
 
-export default function Searchbar({ passToParent }) {
-  const [searchValue, setSearchValue] = useState('');
-  const [searchInput, setSearch] = useState('');
+import {
+  createStyles,
+  Theme,
+  makeStyles,
+} from '@mui/styles'
+import { companySearchData } from './stockData';
+import { Autocomplete, InputAdornment } from '@mui/material';
+import { TextField } from '@mui/material';
+import { PropTypes } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)": {
+      // Default transform is "translate(14px, 20px) scale(1)""
+      // This lines up the label with the initial cursor position in the input
+      // after changing its padding-left.
+      transform: "translate(34px, 20px) scale(1);"
+    }
+  },
+  inputRoot: {
+    color: "#111D13",
+    // This matches the specificity of the default styles at https://github.com/mui-org/material-ui/blob/v4.11.3/packages/material-ui-lab/src/Autocomplete/Autocomplete.js#L90
+    '&[class*="MuiOutlinedInput-root"] .MuiAutocomplete-input:first-child': {
+      // Default left padding is 6px
+      paddingLeft: 26
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#415D43"
+    },
+    "&:hover .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#E18335"
+    },
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#111D13"
+    }
+  }
+}));
+
+export default function Searchbar({ sbDataFunction }) {
+  const classes = useStyles();
+  // When a company is selected from the drop down we will send the selection data to the parent element.
   const handleInput = (event, value) => {
-    event.preventDefault();
-    setSearch(value);
-    console.log(value);
-  };
-
-  const handleSearch = () => {
-    const { Symbol } = searchInput;
-    setSearchValue(Symbol);
-    console.log("Search Value: ", searchValue);
-    passToParent(searchValue)
+    if (value === null) {
+      return;
+    }
+    const data = Object.values(value);
+    sbDataFunction(data);
   };
 
   return (
-    <div style={{ display: "flex", width: '100%', justifyContent: 'center' }}>
-      <h1>You are searching: {searchValue}</h1>
+    <div style={{ display: "flex", width: '100%', justifyContent: 'center', }}>
       <div style={{ width: '75%' }}>
         <Autocomplete
           id="autoSearch"
+          classes={classes}
           onChange={handleInput}
           options={companySearchData}
           getOptionLabel={(option) => `Symbol: ${option.Symbol}      Company: ${option.name}      Industry: ${option.Industry}`}
@@ -88,7 +108,6 @@ export default function Searchbar({ passToParent }) {
           )}
         />
       </div>
-      <IconButton style={{ cursor: "pointer", padding: "17px" }} onClick={handleSearch}><SearchIcon /></IconButton>
     </div>
   );
-}
+};
