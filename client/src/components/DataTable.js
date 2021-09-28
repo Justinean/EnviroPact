@@ -29,12 +29,11 @@ const useStyles = makeStyles({
 
 
 
-export default function DataTable(props) {
+export default function DataTable({ data }) {
 
-    function createData(enviroGrade, enviroScore, socialGrade, socialScore, govGrade, goveScore) {
-        return { enviroGrade, enviroScore, socialGrade, socialScore, govGrade, goveScore };
-    }
-    const classes = useStyles(props)
+
+
+    const classes = useStyles(data)
 
 
     return (
@@ -48,7 +47,7 @@ export default function DataTable(props) {
             <TableContainer className={classes.root}>
                 <Table>
                     <TableHead>
-                        <h1>Company Name</h1>
+                        <h1>{data.companyName}</h1>
                         <TableRow >
                             <TableCell />
                             <TableCell style={{
@@ -60,18 +59,18 @@ export default function DataTable(props) {
                     <TableBody>
                         <TableRow className={classes.row} >
                             <TableCell style={{color: '#111D13'}}>Environmental</TableCell>
-                            <TableCell style={{color: '#111D13'}}>A</TableCell>
-                            <TableCell style={{color: '#111D13'}}>100</TableCell>
+                            <TableCell style={{color: '#111D13'}}>{data.environmentGrade}</TableCell>
+                            <TableCell style={{color: '#111D13'}}>{data.environmentScore}</TableCell>
                         </TableRow>
                         <TableRow className={classes.row}>
                             <TableCell style={{color: '#111D13'}}>Social</TableCell>
-                            <TableCell style={{color: '#111D13'}}>A</TableCell>
-                            <TableCell style={{color: '#111D13'}}>100</TableCell>
+                            <TableCell style={{color: '#111D13'}}>{data.socialGrade}</TableCell>
+                            <TableCell style={{color: '#111D13'}}>{data.socialScore}</TableCell>
                         </TableRow>
                         <TableRow className={classes.row}>
                             <TableCell style={{color: '#111D13'}}>Governance</TableCell>
-                            <TableCell style={{color: '#111D13'}}>A</TableCell>
-                            <TableCell style={{color: '#111D13'}}>100</TableCell>
+                            <TableCell style={{color: '#111D13'}}>{data.governanceGrade}</TableCell>
+                            <TableCell style={{color: '#111D13'}}>{data.governanceScore}</TableCell>
                         </TableRow>
 
                     </TableBody>
