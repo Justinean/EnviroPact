@@ -1,34 +1,51 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
-import { ThemeProvider, Typography } from '@mui/material';
+import {
+  ThemeProvider,
+  Typography,
+  Container,
+  Box,
+  Button,
+} from '@mui/material';
 import darkTheme from '../assets/themes/DarkTheme';
 import { useMutation } from '@apollo/client';
 import { FOLLOW_COMPANY } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { getFollowedCompanyIds, followCompanyId } from '../utils/localStorage';
 import Searchbar from '../components/Searchbar';
-
+import CustomCharts from '../components/CompanyChart';
+import DataTable from '../components/DataTable';
+import { mainApiSearch } from '../utils/API';
+import SavedCompanies from '../components/SavedCompanies';
 
 const useStyles = makeStyles((darkTheme) => {
   return {
-  dashboard: {
-    background:"#415D43",
-    borderRadius:'8px',
-    margin:'30px',
-    color:"#CED0CE",
-    color: "white",
-    display:'flex',
-    flexDirection:'column',
-    justifyContent:'center',
-    "@media (min-width: 800px)": {
-      backgroundColor: " "
+    dashboard: {
+      background: "#415D43",
+      borderRadius: '8px',
+      margin: '30px',
+      color: "#CED0CE",
+      color: "white",
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      "@media (min-width: 800px)": {
+        backgroundColor: " "
       },
-  },
-  
-}
+    },
+    button: {
+      color: "black"
+    }
+  }
 })
 
 const Dashboard = () => {
+  const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
+  const [followCompany, { error }] = useMutation(FOLLOW_COMPANY);
+
+  const classes = useStyles()
+
+  // dummy data
   const data = {
     companyId: 6909,
     companyName: "Target Corporation",
@@ -49,15 +66,9 @@ const Dashboard = () => {
     total: 1157,
   };
 
-  const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
-
   useEffect(() => {
     followCompanyId(savedCompanyIds)
   }, [savedCompanyIds]);
-
-  const classes = useStyles()
-
-  const [followCompany, {error}] = useMutation(FOLLOW_COMPANY);
 
   const onFollow = async e => {
     try {
@@ -65,23 +76,89 @@ const Dashboard = () => {
         return;
       }
       const data = JSON.parse(e.target.getAttribute('data'));
-      await followCompany({variables: {...data}});
+      await followCompany({ variables: { ...data } });
       setSavedCompanyIds([...savedCompanyIds, data.companyId]);
     } catch (err) {
       console.error(err)
     }
   }
 
+  // State that holds the API call that comes in from the searchbar.
+  const [apiSearchData, setApiSearchData] = useState('');
+  // The function that will take the input from the searchbar and update the state for the landing API call.
+  const sbDataFunction = (sbData) => {
+    setApiSearchData(sbData);
+  };
+
+  // This is the state that will hold the data from the API call.
+  // const [data, setData] = useState([]);
+
+  // This function will run the API call and set state of the data.
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    /* if (!apiSearchData) {
+      return false;
+    }
+
+    try {
+      const response = await mainApiSearch(apiSearchData[0]);
+      if (!response.ok) {
+        throw new Error('Something went wrong with the search.');
+      }
+
+      const jsonData = await response.json();
+      const company = jsonData[0];
+      const companyData = {
+        companyId: company.esg_id,
+        companyName: company.company_name,
+        exchangeSymbol: company.exchange_symbol,
+        stockSymbol: company.stock_symbol,
+        environmentGrade: company.environment_grade,
+        environmentLevel: company.environment_level,
+        socialGrade: company.social_grade,
+        socialLevel: company.social_level,
+        governanceGrade: company.governance_grade,
+        governanceLevel: company.governance_level,
+        totalGrade: company.total_grade,
+        totalLevel: company.total_level,
+        lastProcessingDate: company.last_processing_date,
+        environmentScore: company.environment_score,
+        socialScore: company.social_score,
+        governanceScore: company.governance_score,
+        total: company.total,
+      };
+
+      setData(companyData);
+    } catch (err) {
+      console.error(err);
+    } */
+  };
+
   return (
-    <ThemeProvider theme={darkTheme}> 
-    <div className={classes.dashboard}>
+    <ThemeProvider theme={darkTheme}>
+      <div className={classes.dashboard}>
         <Typography
-        variant='h4'
-        component='h2'>
-        Welcome, TODO:Username
-      </Typography>
-      <Searchbar/>
-      
+          variant='h4'
+          component='h2'>
+          Welcome, TODO:Username
+        </Typography>
+        <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
+        <Searchbar sbDataFunction={sbDataFunction} />
+        <Button onClick={handleSearch}>Search</Button>
+        <Container className="chart-container">
+
+          <Box className="chart-box">
+            <CustomCharts data={data} />
+            <SavedCompanies data={data} />
+          </Box>
+        </Container>
+        <Container style={{ marginTop: '300px' }}>
+          <Box>
+            <DataTable data={data} />
+
+          </Box>
+        </Container>
+
       </div>
       {Auth.loggedIn() ? <button onClick={onFollow} data={JSON.stringify(data)}>Follow</button> : null}
     </ThemeProvider>
