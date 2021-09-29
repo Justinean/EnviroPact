@@ -17,6 +17,7 @@ import darkTheme from '../assets/themes/DarkTheme';
 import { ThemeProvider } from '@mui/material'
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
+import Auth from '../utils/auth';
 
 const emails = [<LoginForm />, <SignupForm />];
 
@@ -33,19 +34,11 @@ function SimpleDialog(props) {
 
   return (
     <ThemeProvider theme={darkTheme}>
-    <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>Log In / Sign Up</DialogTitle>
-      <List sx={{ pt: 0 }}>
-        {emails.map((email) => (
-          <ListItem button onClick={() => handleListItemClick(email)} key={email}>
-            
-            <ListItemText primary={email} />
-          </ListItem>
-        ))}
-
-
-      </List>
-    </Dialog>
+      <Dialog onClose={handleClose} open={open}>
+        <DialogTitle>Log In / Sign Up</DialogTitle>
+        <LoginForm />
+        <SignupForm />
+      </Dialog>
     </ThemeProvider>
   );
 }
@@ -59,20 +52,20 @@ SimpleDialog.propTypes = {
 
 const useStyles = makeStyles((darkTheme) => {
   return {
-  button: {
-    "@media (max-width: 768px)": {
-      display:'flex',
-      transform:'translateX(-6px)'
+    button: {
+      "@media (max-width: 768px)": {
+        display: 'flex',
+        transform: 'translateX(-6px)'
       },
-  },
-  buttonText: {
-  textTransform:"capitalize",
-    // background:'red',
-    border:'1px solid #CED0CE',
-    padding:'6px',
-    borderRadius:'5px',
-}
-}
+    },
+    buttonText: {
+      textTransform: "capitalize",
+      // background:'red',
+      border: '1px solid #CED0CE',
+      padding: '6px',
+      borderRadius: '5px',
+    }
+  }
 })
 
 export default function SimpleDialogDemo() {
@@ -92,24 +85,33 @@ export default function SimpleDialogDemo() {
 
   return (
     <div>
-      {/* <Typography variant="subtitle1" component="div">
-        Selected: {selectedValue}
-      </Typography> */}
-      <br />
-      {/* <PeopleAltIcon color="icon"/> */}
-      <Button variant="" color="icon" onClick={handleClickOpen}>
+      {Auth.loggedIn() ?
+      <Button variant="" color="icon" onClick={() => Auth.logout()}>
       <div className={classes.button}>
-        
-      <Typography className={classes.buttonText}>
-              Log In / Sign Up
-      </Typography>
+        <Typography className={classes.buttonText}>
+          Log Out
+        </Typography>
       </div>
       </Button>
-      <SimpleDialog
-        selectedValue={selectedValue}
-        open={open}
-        onClose={handleClose}
-      />
+      :
+        <div>
+          <Button variant="" color="icon" onClick={handleClickOpen}>
+            <div className={classes.button}>
+              <Typography className={classes.buttonText}>
+                Log In / Sign Up
+              </Typography>
+            </div>
+          </Button>
+          <SimpleDialog
+            selectedValue={selectedValue}
+            open={open}
+            onClose={handleClose}
+          />
+        </div>
+      }
+
     </div>
+
+
   );
 }
