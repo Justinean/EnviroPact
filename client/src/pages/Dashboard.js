@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@mui/styles';
 import { ThemeProvider, Typography } from '@mui/material';
 import darkTheme from '../assets/themes/DarkTheme';
-
+import { useMutation } from '@apollo/client';
+import { FOLLOW_COMPANY } from '../utils/mutations';
+import Auth from '../utils/auth';
+import { getFollowedCompanyIds, followCompanyId } from '../utils/localStorage';
 
 const useStyles = makeStyles((darkTheme) => {
   return {
@@ -27,7 +30,49 @@ const useStyles = makeStyles((darkTheme) => {
 })
 
 const Dashboard = () => {
+  const data = {
+    companyId: 6909,
+    companyName: "Target Corporation",
+    exchangeSymbol: "NYSE",
+    stockSymbol: "TGT",
+    environmentGrade: "A",
+    environmentLevel: "Medium",
+    socialGrade: "BBB",
+    socialLevel: "Medium",
+    governanceGrade: "BBB",
+    governanceLevel: "Medium",
+    totalGrade: "BBB",
+    totalLevel: "Excellent",
+    lastProcessingDate: "14-09-2021",
+    environmentScore: 500,
+    socialScore: 337,
+    governanceScore: 320,
+    total: 1157,
+  };
+
+  const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
+
+  useEffect(() => {
+    return () => followCompanyId(savedCompanyIds)
+  }, [savedCompanyIds]);
+
   const classes = useStyles()
+
+  const [followCompany, {error}] = useMutation(FOLLOW_COMPANY);
+
+  const onFollow = async e => {
+    try {
+      if (!Auth.loggedIn()) {
+        return;
+      }
+      const data = JSON.parse(e.target.data);
+      await followCompany({variables: {...data}});
+      setSavedCompanyIds(data.companyId);
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
     <ThemeProvider theme={darkTheme}> 
     <div className={classes.dashboard}>
@@ -37,6 +82,7 @@ const Dashboard = () => {
         Welcome, TODO:Username
       </Typography>
       </div>
+      {Auth.loggedIn() ? <button onClick={onFollow} data={JSON.stringify(data)}>Follow</button> : null}
     </ThemeProvider>
   );
 };
