@@ -87,4 +87,21 @@ const Dashboard = () => {
   );
 };
 
+/*
+  Function for removing a company:
+  import {useMutation} from '@apollo/client';
+  import {UNFOLLOW_COMPANY} from '../utils/mutations';
+
+  const [unfollowCompany, {error}] = useMutation(UNFOLLOW_COMPANY);
+
+  const onUnfollow = async e => {
+    if (!Auth.loggedIn()) {
+        return;
+      }
+    const companyId = JSON.parse(e.target.getAttribute('data'));
+    await unfollowCompany({variables: {companyId}});
+    removeCompanyId(companyId)
+  }
+*/
+
 export default Dashboard;
