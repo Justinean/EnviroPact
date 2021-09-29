@@ -19,7 +19,7 @@ import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import Auth from '../utils/auth';
 
-const emails = [<LoginForm />, <SignupForm />];
+const forms = [<LoginForm />, <SignupForm />];
 
 function SimpleDialog(props) {
   const { onClose, selectedValue, open } = props;
@@ -31,13 +31,15 @@ function SimpleDialog(props) {
   const handleListItemClick = (value) => {
     onClose(value);
   };
-
+const classes = useStyles();
   return (
     <ThemeProvider theme={darkTheme}>
-      <Dialog onClose={handleClose} open={open}>
+      <Dialog color='secondary' onClose={handleClose} open={open}>
+      <div className={classes.window}>
         <DialogTitle>Log In / Sign Up</DialogTitle>
         <LoginForm />
         <SignupForm />
+      </div>
       </Dialog>
     </ThemeProvider>
   );
@@ -64,13 +66,16 @@ const useStyles = makeStyles((darkTheme) => {
       border: '1px solid #CED0CE',
       padding: '6px',
       borderRadius: '5px',
+    },
+    window: {
+      background:"#111D13",
     }
   }
 })
 
 export default function SimpleDialogDemo() {
   const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  const [selectedValue, setSelectedValue] = React.useState(forms[1]);
 
   const handleClickOpen = () => {
     setOpen(true);

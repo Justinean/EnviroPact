@@ -6,21 +6,20 @@ import { useMutation } from '@apollo/client';
 import { FOLLOW_COMPANY } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { getFollowedCompanyIds, followCompanyId } from '../utils/localStorage';
+import Searchbar from '../components/Searchbar';
+
 
 const useStyles = makeStyles((darkTheme) => {
   return {
   dashboard: {
-    padding:'30px 0',
-    margin:'25px',
     background:"#415D43",
+    borderRadius:'8px',
+    margin:'30px',
     color:"#CED0CE",
     color: "white",
-    height:"auto",
     display:'flex',
     flexDirection:'column',
-    borderRadius:'20px',
-    // justifyContent:'center',
-    width:'80vw',
+    justifyContent:'center',
     "@media (min-width: 800px)": {
       backgroundColor: " "
       },
@@ -81,6 +80,8 @@ const Dashboard = () => {
         component='h2'>
         Welcome, TODO:Username
       </Typography>
+      <Searchbar/>
+      
       </div>
       {Auth.loggedIn() ? <button onClick={onFollow} data={JSON.stringify(data)}>Follow</button> : null}
     </ThemeProvider>

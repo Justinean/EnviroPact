@@ -4,6 +4,7 @@ import { KeyboardArrowRight } from '@mui/icons-material';
 import {useMutation} from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { makeStyles } from '@mui/styles';
 
 /*
         TODO: 
@@ -60,10 +61,20 @@ const LoginForm = (props) => {
         }
     }
 
+    const useStyles = makeStyles({
+        input: {
+            marginBottom:'20px'
+        },
+        button: {
+            paddingBottom: '20px',
+        }
+      })
+      const classes = useStyles()
     return (
         <Container>
             <h2> Log In </h2> 
-            <form noValidate autoComplete="off">
+            <form noValidate autoComplete="off" className={classes.form}>
+                <div className={classes.input}>
                 <TextField
                     onChange = {(e) => setEmail(e.target.value)}
                     label="email"
@@ -75,7 +86,8 @@ const LoginForm = (props) => {
                     onBlur={handleEmailBlur}
                     helperText={errorMessageEmail}
                 />
-                            
+                   </div>         
+                   <div className={classes.input}>
                 <TextField
                     onChange = {(e) => setPassword(e.target.value)}
                     label="password"
@@ -88,7 +100,8 @@ const LoginForm = (props) => {
                     helperText= {errorMessagePassword}
                     type='password'
                 />  
-
+                </div>
+                    <div className={classes.button}>
                 <Button
                 onClick={handleFormSubmit}
                 type='submit'
@@ -97,6 +110,7 @@ const LoginForm = (props) => {
                 >
                     Submit
                 </Button>
+                </div>
 
             </form>
         </Container>
