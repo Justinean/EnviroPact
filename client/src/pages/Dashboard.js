@@ -6,6 +6,8 @@ import { useMutation } from '@apollo/client';
 import { FOLLOW_COMPANY } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { getFollowedCompanyIds, followCompanyId } from '../utils/localStorage';
+import Searchbar from '../components/Searchbar';
+
 
 const useStyles = makeStyles((darkTheme) => {
   return {
@@ -78,6 +80,8 @@ const Dashboard = () => {
         component='h2'>
         Welcome, TODO:Username
       </Typography>
+      <Searchbar/>
+      
       </div>
       {Auth.loggedIn() ? <button onClick={onFollow} data={JSON.stringify(data)}>Follow</button> : null}
     </ThemeProvider>

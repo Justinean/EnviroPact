@@ -47,8 +47,11 @@ const useStyles = makeStyles((darkTheme) => {
       },
   },
   dialog: {
-    transform:'translateY(-9px)',
     whiteSpace:'nowrap',
+    "@media (max-width: 768px)": {
+      transform:'translateX(-10%)',
+      },
+    
   },
   navIcon: {
     justifyContent:'center',

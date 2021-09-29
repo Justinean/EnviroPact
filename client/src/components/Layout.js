@@ -36,7 +36,7 @@ const useStyles = makeStyles({
       },
   },
   main: {
-    background:'#273728',
+    background:'#111D13',
     height:'90vh',
     borderBottomRightRadius:'15px',
     "@media (max-width: 768px)": {
@@ -73,29 +73,18 @@ export default function Layout({ children }) {
   const classes = useStyles()
   return (
     <div className={classes.body}>
-      {/* HEADER  */}
       <div className={classes.header}>
-      <Header  />
+        <Header />
       </div>
-    <div className={classes.flexcontainer}>
-      {/* SIDEBAR */}
-      <div
-      className={classes.sidebar}
-      // variant="permanent"
-      // anchor="left"
-      
-      >
-      <Navbar />
+      <div className={classes.flexcontainer}>
+        <div className={classes.sidebar}>
+          <Navbar />
         </div>
-        {/* MAIN  */}
         <div className={classes.main}>
-        <h1>MAIN</h1>
-      {/* output children of layout in App.js */}
-      {/* <div className={classes.page}> */}
-      {children}
-    {/* </div> */}
-    </div>
-    </div>
+          {/* include all children of Layout.js in App.js */}
+          {children}
+        </div>
+      </div>
     </div>
   );
 }
