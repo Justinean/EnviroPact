@@ -53,7 +53,7 @@ const Dashboard = () => {
   const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
 
   useEffect(() => {
-    return () => followCompanyId(savedCompanyIds)
+    followCompanyId(savedCompanyIds)
   }, [savedCompanyIds]);
 
   const classes = useStyles()
@@ -65,9 +65,9 @@ const Dashboard = () => {
       if (!Auth.loggedIn()) {
         return;
       }
-      const data = JSON.parse(e.target.data);
+      const data = JSON.parse(e.target.getAttribute('data'));
       await followCompany({variables: {...data}});
-      setSavedCompanyIds(data.companyId);
+      setSavedCompanyIds([...savedCompanyIds, data.companyId]);
     } catch (err) {
       console.error(err)
     }
