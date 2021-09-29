@@ -31,21 +31,14 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 const useStyles = makeStyles((darkTheme) => {
   return {
   sidebar: {
-    display:'grid',
     flexDirection:'column',
-    background:"#415D43",
     color:"#CED0CE",
-    height:"100%",
-    width:'100vw',
-  },
-  list: {
+    minWidth:"190px",
     "@media (max-width: 768px)": {
-      display:'grid',
-      gridTemplateColumns:'1fr 1fr 1fr 2fr',
+      display:'flex',
       flexDirection:'row',
-      height:"75px",
-      width:'100%',
-      },
+      width:'auto'
+    }
   },
   listItem:{
     "@media (max-width: 768px)": {
@@ -94,8 +87,8 @@ const Navbar = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       
-      <div className={classes.sidebar}>
-      <List className={classes.list}>
+      <div>
+      <List className={classes.sidebar}>
         {menuItems.map(item => (
           <ListItem className={classes.listItem}
           button

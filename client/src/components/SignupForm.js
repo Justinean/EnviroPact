@@ -5,6 +5,7 @@ import {useMutation} from '@apollo/client';
 
 import {CREATE_USER} from '../utils/mutations';
 import Auth from '../utils/auth';
+import { makeStyles } from '@mui/styles';
 
 // TODO: add handleFormSubmit and handleInputChange, will need utils for this to check if working
 
@@ -67,13 +68,23 @@ const SignupForm = (props) => {
         }
     }
 
-
-
+    const useStyles = makeStyles({
+        input: {
+            marginBottom:'20px',
+            minWidth:'400px'
+            
+        },
+        button: {
+            paddingBottom: '20px',
+        }
+      })
+    const classes = useStyles()
 
     return (
         <Container>
             <h2> Sign Up </h2> 
             <form noValidate autoComplete="off">
+            <div className={classes.input}>
                 <TextField
                     onChange = {(e) => setUsername(e.target.value)}
                     label="username"
@@ -85,6 +96,8 @@ const SignupForm = (props) => {
                     onBlur={handleUsernameBlur}
                     helperText= {errorMessageUsername}
                 />
+                </div>
+                <div className={classes.input}>
                 <TextField
                     onChange = {(e) => setEmail(e.target.value)}
                     label="email"
@@ -96,6 +109,8 @@ const SignupForm = (props) => {
                     onBlur={handleEmailBlur}
                     helperText= {errorMessageEmail}
                 />
+                </div>
+                <div className={classes.input}>
                 <TextField
                     onChange = {(e) => setPassword(e.target.value)}
                     label="password"
@@ -108,8 +123,8 @@ const SignupForm = (props) => {
                     helperText= {errorMessagePassword}
                     type='password'
                 />
-
-
+                </div>
+                <div className={classes.button}>
                 <Button
                 onClick={handleFormSubmit}
                 type='submit'
@@ -118,7 +133,7 @@ const SignupForm = (props) => {
                 >
                     Submit
                 </Button>
-
+                </div>
             </form>
         </Container>
     )   
