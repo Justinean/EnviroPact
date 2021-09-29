@@ -72,7 +72,7 @@ const SignupForm = (props) => {
 
     return (
         <Container>
-            <h2> Signup </h2> 
+            <h2> Sign Up </h2> 
             <form noValidate autoComplete="off">
                 <TextField
                     onChange = {(e) => setUsername(e.target.value)}

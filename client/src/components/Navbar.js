@@ -14,10 +14,10 @@ import {
   ListItemText
 } from '@mui/material'
 import { makeStyles } from '@mui/styles';
+import Dialog from './Dialog'
 
 
 // imports for working on sidebar - delete unused 
-import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -31,8 +31,40 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 const useStyles = makeStyles((darkTheme) => {
   return {
   sidebar: {
+    display:'grid',
+    flexDirection:'column',
     background:"#415D43",
-    color:"#CED0CE"
+    color:"#CED0CE",
+    height:"100%",
+    width:'100vw',
+  },
+  list: {
+    "@media (max-width: 768px)": {
+      display:'grid',
+      gridTemplateColumns:'1fr 1fr 1fr 2fr',
+      flexDirection:'row',
+      height:"75px",
+      width:'100%',
+      },
+  },
+  listItem:{
+    "@media (max-width: 768px)": {
+      display:'flex',
+      flexDirection:'column',
+      },
+  },
+  dialog: {
+    transform:'translateY(-9px)',
+    whiteSpace:'nowrap',
+  },
+  navIcon: {
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  navText: {
+    "@media (max-width: 768px)": {
+      justifyContent:'center',
+      },
   }
 }
 })
@@ -61,22 +93,26 @@ const Navbar = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <div className={classes.root}>
+      
       <div className={classes.sidebar}>
-      <List>
+      <List className={classes.list}>
         {menuItems.map(item => (
-          <ListItem
+          <ListItem className={classes.listItem}
           button
           key={item.text}
           onClick={()=> history.push(item.path)}
           >
-            <ListItemIcon>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.text} />
+            <ListItemIcon className={classes.navIcon}>{item.icon}</ListItemIcon>
+            <ListItemText className={classes.navText} primary={item.text} />
             </ListItem>
         ))}
+        <ListItem className={classes.dialog}>
+          <Dialog />
+         </ListItem>
         </List>
         </div>
-        </div>
+
+        
     </ThemeProvider>
   );
 };
