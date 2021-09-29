@@ -13,8 +13,8 @@ import './landing.css';
 import DataTable from '../../components/DataTable';
 import Searchbar from '../../components/Searchbar';
 import { mainApiSearch } from '../../utils/API';
-import savedCompanies from '../../components/SavedCompanies'
-import SavedCompanies from '../../components/SavedCompanies';
+import companySearchData from '../../components/stockData';
+import FollowedCompanies from '../../components/FollowedCompanies';
 
 const Landing = () => {
   // dummy data
@@ -112,7 +112,7 @@ const Landing = () => {
 
           <Box className="chart-box">
             {/* <CustomCharts data={data} /> */}
-            <SavedCompanies data={data} />
+            <FollowedCompanies companySearchData={ companySearchData } />
           </Box>
         </Container>
         <Container style={{ marginTop: '300px' }}>

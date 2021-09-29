@@ -35454,3 +35454,5 @@ export const companySearchData = [
     "Market Cap": "415.73M"
   }
 ];
+
+export default companySearchData;
