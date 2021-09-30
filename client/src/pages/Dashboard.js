@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
 import {
-  ThemeProvider,
-  Typography,
-  Container,
   Box,
   Button,
+  Container,
+  ThemeProvider,
+  Typography,
 } from '@mui/material';
 import darkTheme from '../assets/themes/DarkTheme';
 import { useMutation } from '@apollo/client';
@@ -16,7 +16,7 @@ import Searchbar from '../components/Searchbar';
 import CustomCharts from '../components/CompanyChart';
 import DataTable from '../components/DataTable';
 import { mainApiSearch } from '../utils/API';
-import SavedCompanies from '../components/SavedCompanies';
+import FollowedCompanies from '../components/FollowedCompanies';
 
 const useStyles = makeStyles((darkTheme) => {
   return {
@@ -146,40 +146,20 @@ const Dashboard = () => {
         <Searchbar sbDataFunction={sbDataFunction} />
         <Button onClick={handleSearch}>Search</Button>
         <Container className="chart-container">
-
           <Box className="chart-box">
             <CustomCharts data={data} />
-            <SavedCompanies data={data} />
+            <FollowedCompanies data={data} />
           </Box>
         </Container>
         <Container style={{ marginTop: '300px' }}>
           <Box>
             <DataTable data={data} />
-
           </Box>
         </Container>
-
       </div>
       {Auth.loggedIn() ? <button onClick={onFollow} data={JSON.stringify(data)}>Follow</button> : null}
     </ThemeProvider>
   );
 };
-
-/*
-  Function for removing a company:
-  import {useMutation} from '@apollo/client';
-  import {UNFOLLOW_COMPANY} from '../utils/mutations';
-
-  const [unfollowCompany, {error}] = useMutation(UNFOLLOW_COMPANY);
-
-  const onUnfollow = async e => {
-    if (!Auth.loggedIn()) {
-        return;
-      }
-    const companyId = JSON.parse(e.target.getAttribute('data'));
-    await unfollowCompany({variables: {companyId}});
-    removeCompanyId(companyId)
-  }
-*/
 
 export default Dashboard;

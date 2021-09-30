@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import CustomCharts from '../../components/CompanyChart';
 import {
-  ThemeProvider,
-  Container,
-  Card,
   Box,
   Button,
+  Container,
+  ThemeProvider,
 } from '@mui/material';
 
-import darkTheme from '../../assets/themes/DarkTheme';
 import './landing.css';
+import darkTheme from '../../assets/themes/DarkTheme';
+import CustomCharts from '../../components/CompanyChart';
 import DataTable from '../../components/DataTable';
 import Searchbar from '../../components/Searchbar';
 import { mainApiSearch } from '../../utils/API';
-import companySearchData from '../../components/stockData';
+import companySearchData from '../../assets/stockData';
 import FollowedCompanies from '../../components/FollowedCompanies';
 
 const Landing = () => {
@@ -94,14 +93,12 @@ const Landing = () => {
         <Box sx={{ mr: 25, ml: 25 }} className="box">
           <Box className="card">
             <h3 className="enviro-header"> EnviroPact: </h3>
-
             <p className="enviro-para"> a pact to improve our environment, economy, and society by holding businesses, corporations, and governments accountable for their actions and damages. Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
           </Box>
         </Box>
         <Box sx={{ mr: 25, ml: 25 }} className="mission-box">
           <Box className="card">
             <h3 className="enviro-header"> Mission: </h3>
-
             <p className="enviro-para"> Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
           </Box>
         </Box>
@@ -109,23 +106,17 @@ const Landing = () => {
         <Searchbar sbDataFunction={sbDataFunction} />
         <Button onClick={handleSearch}>Search</Button>
         <Container className="chart-container">
-
           <Box className="chart-box">
-            {/* <CustomCharts data={data} /> */}
-            <FollowedCompanies companySearchData={ companySearchData } />
+            <CustomCharts data={data} />
           </Box>
         </Container>
         <Container style={{ marginTop: '300px' }}>
           <Box>
-            {/* <DataTable data={data} /> */}
-
+            <DataTable data={data} />
           </Box>
         </Container>
-
       </Container>
-
     </ThemeProvider>
-
   );
 };
 

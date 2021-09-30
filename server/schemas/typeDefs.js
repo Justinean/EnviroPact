@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     companyCount: Int
-    savedCompanies: [Company]!
+    followedCompanies: [Company]!
   }
   type Company {
     companyId: ID
