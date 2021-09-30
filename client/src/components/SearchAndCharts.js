@@ -34,8 +34,8 @@ const useStyles = makeStyles({
     display:'flex',
     flexDirection:'row',
     justifyContent:'space-around',
-    alignItems:'center',
     "@media (max-width: 1200px)": {
+      alignItems:'center',
       flexDirection:'column',
     },
   },
@@ -112,7 +112,7 @@ export default function SearchAndCharts({ data }) {
         marginBottom: '100px',
         color: '#111D13',
       }}>
-        <Box sx={{ marginBottom: '100px'}}>
+        <Box sx={{ marginBottom: '40px', paddingTop:'20px'}}>
           <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
           <Searchbar sbDataFunction={sbDataFunction} />
           <Button className={classes.searchButton} onClick={handleSearch}>Search</Button>

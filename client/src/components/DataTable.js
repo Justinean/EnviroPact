@@ -32,10 +32,10 @@ export default function DataTable({ data }) {
 
     <Box sx={{
       width: 400,
-      height: 200,
+      // height: 200,
       // marginLeft: '50px',
-      marginTop: '150px',
-      marginBottom: '20px',
+      marginTop: '85px',
+      marginBottom: '30px',
       color: '#111D13'
     }}>
       <TableContainer className={classes.root}>
@@ -71,6 +71,7 @@ export default function DataTable({ data }) {
         </Table>
       </TableContainer>
     </Box>
+  
 
 
 
