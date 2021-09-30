@@ -31,15 +31,15 @@ function SimpleDialog(props) {
   const handleListItemClick = (value) => {
     onClose(value);
   };
-const classes = useStyles();
+  const classes = useStyles();
   return (
     <ThemeProvider theme={darkTheme}>
       <Dialog color='secondary' onClose={handleClose} open={open}>
-      <div className={classes.window}>
-        <DialogTitle>Log In / Sign Up</DialogTitle>
-        <LoginForm />
-        <SignupForm />
-      </div>
+        <div className={classes.window}>
+          <DialogTitle>Log In / Sign Up</DialogTitle>
+          <LoginForm />
+          <SignupForm />
+        </div>
       </Dialog>
     </ThemeProvider>
   );
@@ -68,7 +68,7 @@ const useStyles = makeStyles((darkTheme) => {
       borderRadius: '5px',
     },
     window: {
-      background:"#111D13",
+      background: "#111D13",
     }
   }
 })
@@ -91,14 +91,14 @@ export default function SimpleDialogDemo() {
   return (
     <div>
       {Auth.loggedIn() ?
-      <Button variant="" color="icon" onClick={() => Auth.logout()}>
-      <div className={classes.button}>
-        <Typography className={classes.buttonText}>
-          Log Out
-        </Typography>
-      </div>
-      </Button>
-      :
+        <Button variant="" color="icon" onClick={() => Auth.logout()}>
+          <div className={classes.button}>
+            <Typography className={classes.buttonText}>
+              Log Out
+            </Typography>
+          </div>
+        </Button>
+        :
         <div>
           <Button variant="" color="icon" onClick={handleClickOpen}>
             <div className={classes.button}>
