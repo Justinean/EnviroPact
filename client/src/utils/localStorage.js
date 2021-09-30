@@ -7,7 +7,6 @@ export const getFollowedCompanyIds = () => {
 };
 
 export const followCompanyId = (companyIdArr) => {
-  console.log(companyIdArr)
   if (companyIdArr.length) {
     localStorage.setItem('followedCompanies', JSON.stringify(companyIdArr));
   } else {

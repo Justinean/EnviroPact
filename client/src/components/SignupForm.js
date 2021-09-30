@@ -22,7 +22,7 @@ const SignupForm = (props) => {
   const [errorMessageEmail, setErrorMessageEmail] = useState('');
   const [errorMessagePassword, setErrorMessagePassword] = useState('');
 
-  const [createUser, { error }] = useMutation(CREATE_USER);
+  const [createUser, /* { error } */] = useMutation(CREATE_USER);
 
   const handleUsernameBlur = () => {
     setUsernameError(false)

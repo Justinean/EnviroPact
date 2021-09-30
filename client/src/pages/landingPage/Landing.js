@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import {
   Box,
-  Button,
+  // Button,
   Container,
   ThemeProvider,
 } from '@mui/material';
 
 import './landing.css';
 import darkTheme from '../../assets/themes/DarkTheme';
-import CustomCharts from '../../components/CompanyChart';
-import DataTable from '../../components/DataTable';
-import Searchbar from '../../components/Searchbar';
+// import CustomCharts from '../../components/CompanyChart';
+// import DataTable from '../../components/DataTable';
+// import Searchbar from '../../components/Searchbar';
 import SearchAndCharts from '../../components/SearchAndCharts'
-import { mainApiSearch } from '../../utils/API';
+// import { mainApiSearch } from '../../utils/API';
 
 const Landing = () => {
   // dummy data
