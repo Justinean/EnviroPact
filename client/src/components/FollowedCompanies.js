@@ -1,6 +1,6 @@
 import React from 'react';
-import { 
-  Box,
+import {
+  // Box,
   Button,
   Container,
   IconButton,
@@ -9,22 +9,14 @@ import {
   ListItemText,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { GET_ME } from '../utils/queries';
+import { useQuery } from '@apollo/client';
 
-// function generate(element) {
-//     return [0, 1, 2].map((value) =>
-//       React.cloneElement(element, {
-//         key: value,
-//       }),
-//     );
-//   }
+const FollowedCompanies = () => {
+  const { loading, data } = useQuery(GET_ME);
+  const userData = data?.me || {};
 
-const FollowedCompanies = (props) => {
-  const { companySearchData } = props;
-  console.log('stockData', companySearchData)
-
-  // data will be user Data for saved Companies
   const _renderCompanies = (item, index) => {
-    console.log('ITEM', item);
     return (
       // inside here will go the list items
       <ListItem secondaryAction={
@@ -32,7 +24,7 @@ const FollowedCompanies = (props) => {
           <DeleteIcon />
         </IconButton>
       }>
-        <ListItemText primary={item.name}>
+        <ListItemText primary={item.companyName}>
         </ListItemText>
         <ListItem>
           <Button style={{ color: 'black' }}> View Data </Button>
@@ -45,7 +37,7 @@ const FollowedCompanies = (props) => {
     <Container style={{ backgroundColor: '#1E91D6', color: 'white' }}>
       <h2>Followed Companies</h2>
       <List>
-        {companySearchData.map(_renderCompanies)}
+        {userData.followedCompanies.map(_renderCompanies)}
       </List>
     </Container>
   )
@@ -68,5 +60,4 @@ const FollowedCompanies = (props) => {
   }
 */
 
-export default FollowedCompanies
-
+export default FollowedCompanies;

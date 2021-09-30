@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import darkTheme from '../assets/themes/DarkTheme';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { FOLLOW_COMPANY } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { getFollowedCompanyIds, followCompanyId } from '../utils/localStorage';
@@ -17,6 +17,7 @@ import CustomCharts from '../components/CompanyChart';
 import DataTable from '../components/DataTable';
 import { mainApiSearch } from '../utils/API';
 import FollowedCompanies from '../components/FollowedCompanies';
+import { GET_ME } from '../utils/queries';
 
 const useStyles = makeStyles((darkTheme) => {
   return {
@@ -42,11 +43,14 @@ const useStyles = makeStyles((darkTheme) => {
 const Dashboard = () => {
   const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
   const [followCompany, { error }] = useMutation(FOLLOW_COMPANY);
+  const { loading, data } = useQuery(GET_ME);
+  const userData = data?.me || {};
+  console.log("User Data: ", userData);
 
   const classes = useStyles()
 
   // dummy data
-  const data = {
+  /* const searchData = {
     companyId: 6909,
     companyName: "Target Corporation",
     exchangeSymbol: "NYSE",
@@ -64,13 +68,13 @@ const Dashboard = () => {
     socialScore: 337,
     governanceScore: 320,
     total: 1157,
-  };
+  }; */
 
   useEffect(() => {
     followCompanyId(savedCompanyIds)
   }, [savedCompanyIds]);
 
-  const onFollow = async e => {
+  const onFollow = async (e) => {
     try {
       if (!Auth.loggedIn()) {
         return;
@@ -91,12 +95,12 @@ const Dashboard = () => {
   };
 
   // This is the state that will hold the data from the API call.
-  // const [data, setData] = useState([]);
+  const [searchData, setSearchData] = useState([]);
 
   // This function will run the API call and set state of the data.
   const handleSearch = async (event) => {
     event.preventDefault();
-    /* if (!apiSearchData) {
+    if (!apiSearchData) {
       return false;
     }
 
@@ -128,11 +132,21 @@ const Dashboard = () => {
         total: company.total,
       };
 
-      setData(companyData);
+      setSearchData(companyData);
     } catch (err) {
       console.error(err);
-    } */
+    }
   };
+
+  if (loading) {
+    return (
+      <Typography
+        variant='h4'
+        component='h2'>
+        LOADING...
+      </Typography>
+    )
+  }
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -140,24 +154,24 @@ const Dashboard = () => {
         <Typography
           variant='h4'
           component='h2'>
-          Welcome, TODO:Username
+          Welcome, {userData.username}
         </Typography>
         <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
         <Searchbar sbDataFunction={sbDataFunction} />
         <Button onClick={handleSearch}>Search</Button>
         <Container className="chart-container">
           <Box className="chart-box">
-            <CustomCharts data={data} />
-            <FollowedCompanies data={data} />
+            <CustomCharts data={searchData} />
+            <FollowedCompanies data={searchData} />
           </Box>
         </Container>
         <Container style={{ marginTop: '300px' }}>
           <Box>
-            <DataTable data={data} />
+            <DataTable data={searchData} />
           </Box>
         </Container>
       </div>
-      {Auth.loggedIn() ? <button onClick={onFollow} data={JSON.stringify(data)}>Follow</button> : null}
+      {Auth.loggedIn() ? <button onClick={onFollow} data={JSON.stringify(searchData)}>Follow</button> : null}
     </ThemeProvider>
   );
 };

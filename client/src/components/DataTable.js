@@ -61,8 +61,8 @@ export default function DataTable({ data }) {
             </TableRow>
             <TableRow className={classes.row}>
               <TableCell style={{ color: '#111D13' }}>Governance</TableCell>
-              <TableCell style={{ color: '#111D13' }}>{data.governanceGrade ? data.governanceGrade :0}</TableCell>
-              <TableCell style={{ color: '#111D13' }}>{data.governanceScore ? data.governanceScore :0}</TableCell>
+              <TableCell style={{ color: '#111D13' }}>{data.governanceGrade ? data.governanceGrade : 0}</TableCell>
+              <TableCell style={{ color: '#111D13' }}>{data.governanceScore ? data.governanceScore : 0}</TableCell>
             </TableRow>
 
           </TableBody>

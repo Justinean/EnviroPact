@@ -42,15 +42,12 @@ backgroundColor: fade(theme.palette.common.white, 0.15),
 ); */
 
 import {
-  createStyles,
   Theme,
   makeStyles,
 } from '@mui/styles'
 import { companySearchData } from '../assets/stockData';
-import { Autocomplete, InputAdornment } from '@mui/material';
+import { Autocomplete } from '@mui/material';
 import { TextField } from '@mui/material';
-import { PropTypes } from '@material-ui/core';
-import { withStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

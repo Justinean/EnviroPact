@@ -12,8 +12,6 @@ import CustomCharts from '../../components/CompanyChart';
 import DataTable from '../../components/DataTable';
 import Searchbar from '../../components/Searchbar';
 import { mainApiSearch } from '../../utils/API';
-import companySearchData from '../../assets/stockData';
-import FollowedCompanies from '../../components/FollowedCompanies';
 
 const Landing = () => {
   // dummy data
