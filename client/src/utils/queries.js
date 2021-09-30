@@ -7,7 +7,7 @@ export const GET_ME = gql`
       username
       email
       companyCount
-      savedCompanies {
+      followedCompanies {
         companyId
         companyName
         exchangeSymbol
