@@ -171,7 +171,7 @@ const Dashboard = () => {
           </Box>
         </Container>
       </div>
-      {Auth.loggedIn() ? <button onClick={onFollow} data={JSON.stringify(searchData)}>Follow</button> : null}
+      {Auth.loggedIn() && !savedCompanyIds.find(element => element === searchData.companyId) && searchData.companyId ? <button onClick={onFollow} data={JSON.stringify(searchData)}>Follow</button> : null}
     </ThemeProvider>
   );
 };
