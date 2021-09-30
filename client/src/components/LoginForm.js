@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Typography, Button, TextField } from '@mui/material';
+import { Container, /* Typography, */ Button, TextField } from '@mui/material';
 import { KeyboardArrowRight } from '@mui/icons-material';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
@@ -16,7 +16,7 @@ const LoginForm = (props) => {
   const [errorMessageEmail, setErrorMessageEmail] = useState('');
   const [errorMessagePassword, setErrorMessagePassword] = useState('');
 
-  const [login, { error }] = useMutation(LOGIN)
+  const [login, /* { error } */] = useMutation(LOGIN)
 
   const handleEmailBlur = () => {
     setEmailError(false)

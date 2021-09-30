@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
-import Navbar from './components/Navbar';
+// import Header from './components/Header';
+// import Navbar from './components/Navbar';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Landing from './pages/landingPage/Landing';
