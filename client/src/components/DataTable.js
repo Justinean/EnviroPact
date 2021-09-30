@@ -33,13 +33,15 @@ export default function DataTable({ data }) {
     <Box sx={{
       width: 400,
       height: 200,
+      marginLeft: '50px',
+      marginTop: '150px',
       marginBottom: '20px',
       color: '#111D13'
     }}>
       <TableContainer className={classes.root}>
         <Table>
           <TableHead>
-            <h1>{data.companyName ? data.companyName : "Loading"}</h1>
+            {/* <h1>{data.companyName ? data.companyName : "Loading"}</h1> */}
             <TableRow >
               <TableCell />
               <TableCell style={{

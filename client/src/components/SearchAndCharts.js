@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, Container, Typography } from "@material-ui/core";
 import {  } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 import Searchbar from '../components/Searchbar';
 import { mainApiSearch } from '../utils/API';
+import CompanyChart from '../components/CompanyChart'
+import DataTable from '../components/DataTable'
 
 
 
@@ -91,12 +93,28 @@ export default function SearchAndCharts({ data }) {
       <Box sx={{
         width: '100%',
         height: 'auto',
-        marginBottom: '20px',
+        marginBottom: '100px',
         color: '#111D13'
       }}>
-        <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
-        <Searchbar sbDataFunction={sbDataFunction} />
-        <Button onClick={handleSearch}>Search</Button>
+        <Box sx={{ marginBottom: '100px'}}>
+          <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
+          <Searchbar sbDataFunction={sbDataFunction} />
+          <Button onClick={handleSearch}>Search</Button>
+        </Box>
+        <Container sx={{ marginLeft: '100px'}}>
+         <h1>{data.companyName ? data.companyName : "Loading"}</h1>
+          <Container style={{ display: 'flex'}} sx={{marginBottom: '100px', }}>
+            <Box >
+              <CompanyChart data={data} />
+            </Box>
+            <Box>
+              <DataTable data={data} />
+            </Box>
+          </Container>
+        </Container>
+
+
+
       </Box>
   
   

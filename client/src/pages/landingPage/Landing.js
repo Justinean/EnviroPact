@@ -109,8 +109,8 @@ const Landing = () => {
   
           </Box>
         </Container>
-        <Container style={{ marginTop: '400px' }}>
-          <Box>
+        <Container style={{ marginTop: '400px', marginBottom: '150px' }}>
+          <Box style={{ marginBottom: '150px'}}>
             {/* <DataTable data={data} /> */}
             <SearchAndCharts data={data} />
           </Box>
