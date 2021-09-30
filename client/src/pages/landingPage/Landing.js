@@ -11,6 +11,7 @@ import darkTheme from '../../assets/themes/DarkTheme';
 import CustomCharts from '../../components/CompanyChart';
 import DataTable from '../../components/DataTable';
 import Searchbar from '../../components/Searchbar';
+import SearchAndCharts from '../../components/SearchAndCharts'
 import { mainApiSearch } from '../../utils/API';
 
 const Landing = () => {
@@ -100,17 +101,18 @@ const Landing = () => {
             <p className="enviro-para"> Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
           </Box>
         </Box>
-        <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
+        {/* <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
         <Searchbar sbDataFunction={sbDataFunction} />
-        <Button onClick={handleSearch}>Search</Button>
+        <Button onClick={handleSearch}>Search</Button> */}
         <Container className="chart-container">
           <Box className="chart-box">
-            <CustomCharts data={data} />
+  
           </Box>
         </Container>
-        <Container style={{ marginTop: '300px' }}>
-          <Box>
-            <DataTable data={data} />
+        <Container style={{ marginTop: '400px', marginBottom: '150px' }}>
+          <Box style={{ marginBottom: '150px'}}>
+            {/* <DataTable data={data} /> */}
+            <SearchAndCharts data={data} />
           </Box>
         </Container>
       </Container>
