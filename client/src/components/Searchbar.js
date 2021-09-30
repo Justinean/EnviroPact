@@ -49,13 +49,21 @@ import { companySearchData } from '../assets/stockData';
 import { Autocomplete } from '@mui/material';
 import { TextField } from '@mui/material';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     "& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)": {
       // Default transform is "translate(14px, 20px) scale(1)""
       // This lines up the label with the initial cursor position in the input
       // after changing its padding-left.
       transform: "translate(34px, 20px) scale(1);"
+    }
+  },
+  bar: {
+    backgroundColor: '#CED0CE',
+    color: 'black',
+    '&:hover': {
+      backgroundColor: '#1E91D6',
+      color: 'snow'
     }
   },
   inputRoot: {
@@ -65,7 +73,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       paddingLeft: 26
     },
     "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#415D43"
+      borderColor: "#415D43",
+      '&:hover': {
+        boarderColor: '#415D43'
+      }
     },
     "&:hover .MuiOutlinedInput-notchedOutline": {
       borderColor: "#E18335"
@@ -100,6 +111,7 @@ export default function Searchbar({ sbDataFunction }) {
             <TextField {...params}
               label="Search by Stock Symbol, Company Name, or Industry"
               variant="outlined"
+              className={classes.bar}
             />
           )}
         />
