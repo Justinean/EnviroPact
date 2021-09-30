@@ -34,8 +34,8 @@ export default function CustomCharts({ data }) {
       <Box sx={{
         width: 400,
         height: 200,
-        bottomMargin: '50px',
-        marginLeft: '100px'
+        // marginLeft: '100px',
+        marginBottom:'150px'
       }}>
         {/* <h1>{data.companyName ? data.companyName : "Loading"}</h1> */}
         <Typography variant="h6">ESG Scores</Typography>

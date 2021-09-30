@@ -29,6 +29,22 @@ const useStyles = makeStyles({
   },
   box: {
     marginBottom: '20px',
+  },
+  charts: {
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'space-around',
+    alignItems:'center',
+    "@media (max-width: 1200px)": {
+      flexDirection:'column',
+    },
+  },
+  searchButton: {
+    marginTop:'8px',
+    border:'2px solid black',
+    background:'#415D43',
+    color:'#CED0CE',
+    fontWeight:'700',
   }
 })
 
@@ -94,23 +110,23 @@ export default function SearchAndCharts({ data }) {
         width: '100%',
         height: 'auto',
         marginBottom: '100px',
-        color: '#111D13'
+        color: '#111D13',
       }}>
         <Box sx={{ marginBottom: '100px'}}>
           <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
           <Searchbar sbDataFunction={sbDataFunction} />
-          <Button onClick={handleSearch}>Search</Button>
+          <Button className={classes.searchButton} onClick={handleSearch}>Search</Button>
         </Box>
         <Container sx={{ marginLeft: '100px'}}>
          <h1>{data.companyName ? data.companyName : "Loading"}</h1>
-          <Container style={{ display: 'flex'}} sx={{marginBottom: '100px', }}>
-            <Box >
+          <div className={classes.charts}>
+            <div >
               <CompanyChart data={data} />
-            </Box>
-            <Box>
+            </div>
+            <div>
               <DataTable data={data} />
-            </Box>
-          </Container>
+            </div>
+          </div>
         </Container>
 
 
