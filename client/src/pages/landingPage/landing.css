@@ -14,45 +14,56 @@ body {
   flex-direction: column;
 }
 
-.card {
-  background-color: var(--primary);
-  margin-top: 20px;
+.card-container {
+  margin-top: 50px;
   display: flex;
-  justify-content: flex-end;
-  width: 50%;
-  margin-right: 2%;
-  margin-left: 2%;
-  margin-bottom: 20px;
-  border: 2px solid white;
+  flex-direction: column;
 }
 
-.box {
+.card {
+  display:flex;
+  flex-direction: row;
+  padding:20px;
+  background-color: var(--primary);
+  margin: 20px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-end;
-  background-color: var(--dark);
+  margin-bottom: 20px;
+  /* border: 1px solid white; */
   color: var(--light-secondary);
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #aaa;
 }
-.mission-box {
-  display: flex;
-  background-color: var(--dark);
-  color: var(--light-secondary);
+
+@media only screen and (max-width: 768px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
 }
+
+
 .enviro-header {
   font-size: 2.5em;
-  margin-right: 4%;
-  margin-left: 2%;
+  margin: 10px;
 }
 
 .enviro-para {
   display: flex;
-  margin-top: 7%;
-  margin-right: 7%;
+  margin: 10px;
   text-align: left;
+  line-height: 1.25;
 }
-.chart-container {
-  margin-top: 100px;
-  margin-left: 10%;
+.chartcontainer {
+  margin:100px 20px;
+  background-color: var(--light-secondary);
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #aaa;
 }
 
 .sample-chart-h3 {

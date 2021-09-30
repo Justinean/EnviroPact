@@ -33,7 +33,7 @@ export default function DataTable({ data }) {
     <Box sx={{
       width: 400,
       height: 200,
-      marginLeft: '50px',
+      // marginLeft: '50px',
       marginTop: '150px',
       marginBottom: '20px',
       color: '#111D13'

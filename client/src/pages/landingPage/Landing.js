@@ -89,32 +89,30 @@ const Landing = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <Container className="main-container">
-        <Box sx={{ mr: 25, ml: 25 }} className="box">
-          <Box className="card">
+        <div className="card-container">
+          <Box className="card enviro">
             <h3 className="enviro-header"> EnviroPact: </h3>
-            <p className="enviro-para"> a pact to improve our environment, economy, and society by holding businesses, corporations, and governments accountable for their actions and damages. Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
+            <p className="enviro-para"> A pact to improve our environment, economy, and society by holding businesses, corporations, and governments accountable for their actions and damages. Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
+
           </Box>
-        </Box>
-        <Box sx={{ mr: 25, ml: 25 }} className="mission-box">
-          <Box className="card">
+        
+        
+          <Box className="card mission">
             <h3 className="enviro-header"> Mission: </h3>
             <p className="enviro-para"> Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
           </Box>
-        </Box>
+          </div>
+        
         {/* <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
         <Searchbar sbDataFunction={sbDataFunction} />
         <Button onClick={handleSearch}>Search</Button> */}
-        <Container className="chart-container">
-          <Box className="chart-box">
-  
-          </Box>
-        </Container>
-        <Container style={{ marginTop: '400px', marginBottom: '150px' }}>
-          <Box style={{ marginBottom: '150px'}}>
+        
+        {/* <Container style={{ marginTop: '400px', marginBottom: '150px' }}> */}
+          <Box className="chartcontainer" style={{ marginBottom: '150px'}}>
             {/* <DataTable data={data} /> */}
             <SearchAndCharts data={data} />
           </Box>
-        </Container>
+        {/* </Container> */}
       </Container>
     </ThemeProvider>
   );

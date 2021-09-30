@@ -37,7 +37,6 @@ const useStyles = makeStyles({
   },
   main: {
     background: '#111D13',
-    height: '90vh',
     borderBottomRightRadius: '15px',
     "@media (max-width: 768px)": {
       flexDirection: "column",
