@@ -10,18 +10,35 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { GET_ME } from '../utils/queries';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation} from '@apollo/client';
+import {UNFOLLOW_COMPANY} from '../utils/mutations';
+import { removeCompanyId } from '../utils/localStorage';
+import Auth from '../utils/auth';
 
 const FollowedCompanies = () => {
   const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
+  const [unfollowCompany, {error}] = useMutation(UNFOLLOW_COMPANY);
+
+  const onUnfollow = async companyId => {
+    if (!Auth.loggedIn()) {
+      return;
+    }
+    await unfollowCompany({variables: {companyId}});
+    removeCompanyId(companyId);
+  }
 
   const _renderCompanies = (item, index) => {
+    const setIndexandSend = () => {
+      onUnfollow(JSON.parse(localStorage.getItem('followedCompanies'))[index])
+    }
     return (
       // inside here will go the list items
       <ListItem secondaryAction={
         <IconButton edge="end" aria-label="delete">
-          <DeleteIcon />
+          <DeleteIcon 
+          onClick={setIndexandSend}
+          />
         </IconButton>
       }>
         <ListItemText primary={item.companyName}>
@@ -42,22 +59,5 @@ const FollowedCompanies = () => {
     </Container>
   )
 }
-
-/*
-  Function for removing a company:
-  import {useMutation} from '@apollo/client';
-  import {UNFOLLOW_COMPANY} from '../utils/mutations';
-
-  const [unfollowCompany, {error}] = useMutation(UNFOLLOW_COMPANY);
-
-  const onUnfollow = async e => {
-    if (!Auth.loggedIn()) {
-        return;
-      }
-    const companyId = JSON.parse(e.target.getAttribute('data'));
-    await unfollowCompany({variables: {companyId}});
-    removeCompanyId(companyId)
-  }
-*/
 
 export default FollowedCompanies;
