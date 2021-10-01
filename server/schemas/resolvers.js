@@ -4,7 +4,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         me: async (parent, args, {user}) => {
-            return User.findOne({ _id: user._id}).populate('savedCompanies').populate('goals');
+            return User.findOne({ _id: user._id}).populate('followedCompanies').populate('goals');
         }
     },
     Mutation: {
@@ -35,7 +35,7 @@ const resolvers = {
         followCompany: async (parent, args, {user}) => {
             const updatedUser = await User.findOneAndUpdate(
                 { _id: user._id },
-                { $addToSet: { savedCompanies: args } },
+                { $addToSet: { followedCompanies: args } },
                 { new: true, runValidators: true }
             );
             if (!updatedUser) {
@@ -46,7 +46,7 @@ const resolvers = {
         unfollowCompany: async (parent, args, {user}) => {
             const updatedUser = await User.findOneAndUpdate(
                 { _id: user._id },
-                { $pull: { savedCompanies: { companyId: args.companyId } } },
+                { $pull: { followedCompanies: { companyId: args.companyId } } },
                 { new: true }
             );
             if (!updatedUser) {

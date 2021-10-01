@@ -1,75 +1,79 @@
 :root {
-   --primary: #415D43;
-   --dark: #111D13;
-   --light: #1E91D6;
-   --light-secondary: snow;
-   --secondary: #E18335;
-
-
+  --primary: #415d43;
+  --dark: #111d13;
+  --light: #1e91d6;
+  --light-secondary: snow;
+  --secondary: #e18335;
 }
 body {
-    background-color: var(--light-secondary);
+  background-color: var(--light-secondary);
 }
 
-
 .main-container {
-    display:flex;
-    flex-direction: column;
-    
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
-    background-color: var(--primary);
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    width: 50%;
-    margin-right: 2%;
-    margin-left: 2%;
-    margin-bottom: 20px;
-    border: 2px solid white;
+  display:flex;
+  flex-direction: row;
+  padding:20px;
+  background-color: var(--primary);
+  margin: 20px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  /* border: 1px solid white; */
+  color: var(--light-secondary);
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #aaa;
 }
 
-.box {
+@media only screen and (max-width: 768px) {
+  .card {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    background-color: var(--dark);
-    color: var(--light-secondary);
+    flex-direction: column;
+  }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+}
 
-}
-.mission-box {
-    display: flex;
-    background-color: var(--dark);
-    color: var(--light-secondary)
-}
+
 .enviro-header {
-    font-size: 2.5em;
-    margin-right: 4%;
-    margin-left: 2%;
+  font-size: 2.5em;
+  margin: 10px;
 }
 
 .enviro-para {
-    display: flex;
-    margin-top: 7%;
-    margin-right: 7%;
-    text-align: left;
+  display: flex;
+  margin: 10px;
+  text-align: left;
+  line-height: 1.25;
 }
-.chart-container {
-    margin-top: 100px;
-    margin-left: 10%;
-
+.chartcontainer {
+  margin:100px 20px;
+  background-color: var(--light-secondary);
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #aaa;
 }
 
 .sample-chart-h3 {
-    font-size: 2.5em;
-    text-align: left;
+  font-size: 2.5em;
+  text-align: left;
 }
 .chart-box {
-    margin-left: 10%;
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
+  margin-left: 10%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

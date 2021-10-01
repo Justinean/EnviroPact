@@ -35,7 +35,7 @@ export const FOLLOW_COMPANY = gql`
       username
       email
       companyCount
-      savedCompanies {
+      followedCompanies {
         companyId
         companyName
         exchangeSymbol
@@ -77,7 +77,7 @@ export const UNFOLLOW_COMPANY = gql`
       username
       email
       companyCount
-      savedCompanies {
+      followedCompanies {
         companyId
         companyName
         exchangeSymbol

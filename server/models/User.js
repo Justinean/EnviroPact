@@ -20,7 +20,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    savedCompanies: [companySchema],
+    followedCompanies: [companySchema],
   },
   {
     toJSON: {
@@ -45,7 +45,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 userSchema.virtual('companyCount').get(function () {
-  return this.savedCompanies.length;
+  return this.followedCompanies.length;
 });
 
 const User = model('User', userSchema);

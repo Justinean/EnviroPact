@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import CustomCharts from '../../components/CompanyChart';
 import {
-  ThemeProvider,
-  Container,
-  Card,
   Box,
-  Button,
+  // Button,
+  Container,
+  ThemeProvider,
 } from '@mui/material';
 
-import darkTheme from '../../assets/themes/DarkTheme';
 import './landing.css';
-import DataTable from '../../components/DataTable';
-import Searchbar from '../../components/Searchbar';
-import { mainApiSearch } from '../../utils/API';
-import savedCompanies from '../../components/SavedCompanies'
-import SavedCompanies from '../../components/SavedCompanies';
+import darkTheme from '../../assets/themes/DarkTheme';
+// import CustomCharts from '../../components/CompanyChart';
+// import DataTable from '../../components/DataTable';
+// import Searchbar from '../../components/Searchbar';
+import SearchAndCharts from '../../components/SearchAndCharts'
+// import { mainApiSearch } from '../../utils/API';
 
 const Landing = () => {
   // dummy data
@@ -91,41 +89,32 @@ const Landing = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <Container className="main-container">
-        <Box sx={{ mr: 25, ml: 25 }} className="box">
-          <Box className="card">
+        <div className="card-container">
+          <Box className="card enviro">
             <h3 className="enviro-header"> EnviroPact: </h3>
+            <p className="enviro-para"> A pact to improve our environment, economy, and society by holding businesses, corporations, and governments accountable for their actions and damages. Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
 
-            <p className="enviro-para"> a pact to improve our environment, economy, and society by holding businesses, corporations, and governments accountable for their actions and damages. Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
           </Box>
-        </Box>
-        <Box sx={{ mr: 25, ml: 25 }} className="mission-box">
-          <Box className="card">
+        
+        
+          <Box className="card mission">
             <h3 className="enviro-header"> Mission: </h3>
-
             <p className="enviro-para"> Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
           </Box>
-        </Box>
-        <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
+          </div>
+        
+        {/* <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
         <Searchbar sbDataFunction={sbDataFunction} />
-        <Button onClick={handleSearch}>Search</Button>
-        <Container className="chart-container">
-
-          <Box className="chart-box">
-            {/* <CustomCharts data={data} /> */}
-            <SavedCompanies data={data} />
-          </Box>
-        </Container>
-        <Container style={{ marginTop: '300px' }}>
-          <Box>
+        <Button onClick={handleSearch}>Search</Button> */}
+        
+        {/* <Container style={{ marginTop: '400px', marginBottom: '150px' }}> */}
+          <Box className="chartcontainer" style={{ marginBottom: '150px'}}>
             {/* <DataTable data={data} /> */}
-
+            <SearchAndCharts data={data} />
           </Box>
-        </Container>
-
+        {/* </Container> */}
       </Container>
-
     </ThemeProvider>
-
   );
 };
 
