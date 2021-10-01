@@ -52,6 +52,7 @@ const useStyles = makeStyles({
     height: 'auto',
     marginBottom: '100px',
     color: '#111D13',
+    zIndex:'1',
  },
  searchBar: {
   marginBottom: '40px',
