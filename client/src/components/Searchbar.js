@@ -76,7 +76,7 @@ export default function Searchbar(props) {
             />
           )}
         />
-        <APIClickable className={classes.searchButton} query={selected.Symbol}>Search</APIClickable>
+        <APIClickable className={classes.searchButton} style={{ fontSize: '1.25rem', color:'#000', marginTop:'10px', padding:'2px', textTransform:'capitalize', border:'2px solid black', marginBottom:'30px', backgroundColor:'#E18335', cursor:'pointer', borderRadius:'7px',}} query={selected.Symbol}>Search</APIClickable>
       </div>
     </div>
   );
