@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Button, Container, Typography } from "@material-ui/core";
+import { Box, /* Button, */ Container/* , Typography */ } from "@material-ui/core";
 import { } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 import Searchbar from '../components/Searchbar';
-import { mainApiSearch } from '../utils/API';
 import CompanyChart from '../components/CompanyChart';
 import DataTable from '../components/DataTable';
-import { APIClickable } from "./APIClickable";
 import { CompanyDataContext } from "../utils/CompanyDataContext";
 import { FOLLOW_COMPANY } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
@@ -51,9 +49,28 @@ const useStyles = makeStyles({
   }
 })
 
-
-export default function SearchAndCharts({ data, dataForSearch }) {
-  const {data: searchData} = useContext(CompanyDataContext);
+export default function SearchAndCharts({ data }) {
+  // dummy data
+  const searchData = {
+    companyId: 2005,
+    companyName: "Test4",
+    exchangeSymbol: "NYSE",
+    stockSymbol: "TGT",
+    environmentGrade: "A",
+    environmentLevel: "Medium",
+    socialGrade: "BBB",
+    socialLevel: "Medium",
+    governanceGrade: "BBB",
+    governanceLevel: "Medium",
+    totalGrade: "BBB",
+    totalLevel: "Excellent",
+    lastProcessingDate: "14-09-2021",
+    environmentScore: 500,
+    socialScore: 337,
+    governanceScore: 320,
+    total: 1157,
+  };
+  // const { data: searchData } = useContext(CompanyDataContext);
   const classes = useStyles(data)
   const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
   const [followCompany, /* { error } */] = useMutation(FOLLOW_COMPANY);
