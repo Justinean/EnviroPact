@@ -107,7 +107,7 @@ const Landing = () => {
             
             <p className=""> EnviroPact uses the ESG Enterprise API which provides businesses and corporations ratings and scores that pertain to their environmental, social and governance impacts and practices.</p>
             <p>
-            <span className="bold secondaryColor">Environmental</span> scores and ratings are based on the organization's climate actions, biodiversity, wastewater management, GHG emissions and air pollution.</p>
+            <span className="bold 1secondaryColor">Environmental</span> scores and ratings are based on the organization's climate actions, biodiversity, wastewater management, GHG emissions and air pollution.</p>
             <p>
             <span className="bold secondaryColor">Social</span> scores and ratings are based on the organization's diversity, community relations, workplace safety, employee health, training, and privacy.</p>
             <p>

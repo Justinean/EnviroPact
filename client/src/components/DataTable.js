@@ -22,6 +22,12 @@ const useStyles = makeStyles({
   },
   box: {
     marginBottom: '20px',
+  },
+  table:{
+    width: 400,
+      marginTop: '85px',
+      marginBottom: '30px',
+      color: '#111D13'
   }
 })
 
@@ -30,14 +36,7 @@ export default function DataTable({ data }) {
 
   return (
 
-    <Box sx={{
-      width: 400,
-      // height: 200,
-      // marginLeft: '50px',
-      marginTop: '85px',
-      marginBottom: '30px',
-      color: '#111D13'
-    }}>
+    <Box className={classes.table}>
       <TableContainer className={classes.root}>
         <Table>
           <TableHead>
