@@ -23,12 +23,13 @@ const useStyles = makeStyles({
   box: {
     marginBottom: '20px',
   },
-  table:{
+  tableBox:{
+
     width: 400,
-      marginTop: '85px',
-      marginBottom: '30px',
-      color: '#111D13'
-  }
+    marginTop: '85px',
+    marginBottom: '30px',
+    color: '#111D13'
+}
 })
 
 export default function DataTable({ data, useFullData }) {
@@ -136,15 +137,7 @@ export default function DataTable({ data, useFullData }) {
 
 
   return (
-
-    <Box sx={{
-      width: 400,
-      // height: 200,
-      // marginLeft: '50px',
-      marginTop: '85px',
-      marginBottom: '30px',
-      color: '#111D13'
-    }}>
+    <Box className={classes.tableBox}>
       <TableContainer className={classes.root}>
         {useFullData ? _renderFullSetOfData() : _renderStandardSetOfData() }
       </TableContainer>

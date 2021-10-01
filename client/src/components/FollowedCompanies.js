@@ -129,7 +129,7 @@ const FollowedCompanies = (props) => {
   };
 
   return (
-    <Accordion>
+    <Accordion style={{ marginTop: "30px" }}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"

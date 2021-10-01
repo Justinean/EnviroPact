@@ -78,34 +78,6 @@ const Dashboard = () => {
   };
 
   return (
-
-    // Previous return, commented out by bp and replaced by same as Landing page SearchAndCharts so that component can house multiple variable ways to act. TODO Delete if not needed.
-
-    // <ThemeProvider theme={darkTheme}>
-    //   <div className={classes.dashboard}>
-    //     <Typography
-    //       variant='h4'
-    //       component='h2'>
-    //       Welcome, {userData.username}
-    //     </Typography>
-    //     <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
-    //     <Searchbar sbDataFunction={sbDataFunction} />
-    //     <Button onClick={handleSearch}>Search</Button>
-    //     <Container className="chart-container">
-    //       <Box className="chart-box">
-    //         <CustomCharts data={searchData} />
-    //         <FollowedCompanies data={searchData} />
-    //       </Box>
-    //     </Container>
-    //     <Container style={{ marginTop: '300px' }}>
-    //       <Box>
-    //         <DataTable data={searchData} />
-    //       </Box>
-    //     </Container>
-    //   </div>
-    //   {Auth.loggedIn() && !savedCompanyIds.find(element => element === searchData.companyId) && searchData.companyId ? <button onClick={onFollow} data={JSON.stringify(searchData)}>Follow</button> : null}
-    // </ThemeProvider>
-
     <ThemeProvider theme={darkTheme}>
         <Container className="main-container">
           <Typography
@@ -114,8 +86,6 @@ const Dashboard = () => {
             style={{ textAlign:'left', marginTop: '35px', color:'#fff', fontStyle:'' }}>
             Welcome, {userData.username}!
           </Typography>
-
-          {/* <Container style={{ marginTop: '400px', marginBottom: '150px' }}> */}
           <Box>
             <FollowedCompanies passViewCompany={passViewCompany} />
           </Box>
