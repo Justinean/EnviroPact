@@ -64,6 +64,16 @@ const SignupForm = (props) => {
 
       Auth.login(token)
     } catch (err) {
+      if (err.message.includes("valid email")) {
+        setEmailError(true);
+        setErrorMessageEmail('Please insert a valid email!');
+      } else if (err.message.includes("email_1 dup key")){
+        setEmailError(true);
+        setErrorMessageEmail('Email already exists!');
+      } else if (err.message.includes("username_1 dup key")){
+        setUsernameError(true);
+        setErrorMessageUsername('Username already exists!');
+      }
       console.error(err)
     }
   }
