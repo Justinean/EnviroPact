@@ -29,7 +29,6 @@ body {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 20px;
-  /* border: 1px solid white; */
   color: var(--light-secondary);
   border-radius: 10px;
   box-shadow: 2px 2px 2px #aaa;
@@ -57,7 +56,7 @@ body {
   display: flex;
   margin: 10px;
   text-align: left;
-  line-height: 1.25;
+  line-height: 1.5;
 }
 
 .bold {
@@ -75,10 +74,14 @@ body {
   margin: 20px;
   text-align: left;
   margin-bottom: 20px;
-  /* border: 1px solid white; */
   color: var(--light-secondary);
   border-radius: 10px;
   box-shadow: 2px 2px 2px #aaa;
+  line-height: 1.5;
+}
+
+.info-para p {
+  margin-bottom: .75rem;
 }
 
 .chartcontainer {

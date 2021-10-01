@@ -46,7 +46,17 @@ const useStyles = makeStyles({
     background: '#415D43',
     color: '#CED0CE',
     fontWeight: '700',
-  }
+  },
+  componentBox:{
+    width: '100%',
+    height: 'auto',
+    marginBottom: '100px',
+    color: '#111D13',
+ },
+ searchBar: {
+  marginBottom: '40px',
+  paddingTop: '40px'
+ },
 })
 
 export default function SearchAndCharts({ data, useFullData }) {
@@ -98,19 +108,14 @@ export default function SearchAndCharts({ data, useFullData }) {
     }
   }
 
+
   return (
 
-    <Box sx={{
-      width: '100%',
-      height: 'auto',
-      marginBottom: '100px',
-      color: '#111D13',
-    }}>
-      <Box sx={{ marginBottom: '40px', paddingTop: '20px' }}>
-        <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
+    <Box className={classes.componentBox}>
+      <Box className={classes.searchBar}>
         <Searchbar />
       </Box>
-      <Container sx={{ marginLeft: '100px' }}>
+      <Container className={classes.chartsContainer}>
         <h1>{searchData.companyName ? searchData.companyName : null }</h1>
         {Auth.loggedIn() && !savedCompanyIds.find(element => element === searchData.companyId) && searchData.companyId ? <button style={{ fontSize: '1.25rem', padding:'6px', marginBottom:'30px', backgroundColor:'#E18335', cursor:'pointer', borderRadius:'7px',}} onClick={onFollow}>Follow</button> : null}
         <div className={classes.charts}>
