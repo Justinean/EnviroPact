@@ -59,6 +59,28 @@ body {
   text-align: left;
   line-height: 1.25;
 }
+
+.bold {
+  font-weight: 700;
+  
+  font-size: 1.15rem;
+}
+.secondaryColor {
+  color:#e18335;
+}
+
+.info-para {
+  padding:20px;
+  background-color: var(--primary);
+  margin: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+  /* border: 1px solid white; */
+  color: var(--light-secondary);
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #aaa;
+}
+
 .chartcontainer {
   margin:100px 20px;
   background-color: var(--light-secondary);

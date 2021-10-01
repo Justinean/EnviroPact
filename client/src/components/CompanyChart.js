@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@material-ui/core";
 import { Doughnut } from "react-chartjs-2";
+import { makeStyles } from '@mui/styles';
 
 export default function CustomCharts({ data }) {
   const [chartData, setChartData] = useState();
@@ -29,14 +30,22 @@ export default function CustomCharts({ data }) {
     setChartData(newChart)
   }, [data])
 
+
+  const useStyles = makeStyles({
+
+    companyChart:{
+      width:'400px',
+      marginBottom:'50px'
+    }
+  })
+
+  
+  
+  const classes = useStyles();
   return (
     <>
-      <Box sx={{
-        width: 400,
-        // height: 200,
-        // marginLeft: '100px',
-        marginBottom:'50px'
-      }}>
+      <Box className={classes.companyChart} 
+     >
         {/* <h1>{data.companyName ? data.companyName : "Loading"}</h1> */}
         <Typography variant="h6">ESG Scores</Typography>
         <Doughnut

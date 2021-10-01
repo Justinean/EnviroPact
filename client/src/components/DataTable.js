@@ -22,14 +22,22 @@ const useStyles = makeStyles({
   },
   box: {
     marginBottom: '20px',
+  },
+  table:{
+    width: 400,
+      marginTop: '85px',
+      marginBottom: '30px',
+      color: '#111D13'
   }
 })
 
 export default function DataTable({ data, useFullData }) {
   const classes = useStyles(data)
 
+
   const _renderStandardSetOfData = () => {
     return (
+
         <Table>
           <TableHead>
             {/* <h1>{data.companyName ? data.companyName : "Loading"}</h1> */}

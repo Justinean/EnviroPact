@@ -110,8 +110,9 @@ const Dashboard = () => {
         <Container className="main-container">
           <Typography
             variant='h4'
-            component='h2'>
-            Welcome, {userData.username}
+            component='h2'
+            style={{ textAlign:'left', marginTop: '35px', color:'#fff', fontStyle:'' }}>
+            Welcome, {userData.username}!
           </Typography>
 
           {/* <Container style={{ marginTop: '400px', marginBottom: '150px' }}> */}
