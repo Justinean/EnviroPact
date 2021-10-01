@@ -12,9 +12,12 @@ const useStyles = makeStyles({
     background: '#415D43',
     borderRight: '1px solid #CED0CE',
     "@media (max-width: 768px)": {
-      width: 'auto',
-      borderBottomLeftRadius: '0px',
-      paddingTop: '0px',
+      position:'sticky',
+      top:'0',
+      zIndex:'999',
+      borderBottom:'1px solid #CED0CE',
+      boxShadow: '0 19px 19px -15px #000',
+
     },
   },
   main: {

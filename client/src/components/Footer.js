@@ -1,15 +1,14 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import { Container, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import logo from '../eplogo.png'
 import CopyrightIcon from '@mui/icons-material/Copyright';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 
-const useStyles = makeStyles((darkTheme) => {
-  return {
-    footer: {
+const useStyles = makeStyles({
+    footerFlex: {
       backgroundColor: "#415D43",
       display:'flex',
       flexDirection:'row',
@@ -17,44 +16,56 @@ const useStyles = makeStyles((darkTheme) => {
       borderBottomRightRadius:'15px',
       borderTop: '1px solid #CED0CE',
       padding:'10px',
+      marginBottom:'10px',
       color:'#CED0CE',
+      alignItems:'center',
+      justifyContent:'center',
+      "@media (max-width: 768px)": {
+        flexDirection:'column',
+      },
     },
     logo: {
       display:'inline-block',
       height:'70px',
-      margin:'3px',
-    },
-    footerLinks:{
-      display:'inline',
-      marginLeft:'10px',
-      textDecoration:'none',
-      color:'#1E91D6',
-      fontSize:'1rem',
     },
     footerLink:{
-      display:'inline',
-      marginLeft:'10px',
       textDecoration:'none',
-      color:'#1E91D6',
+      color:'#E18335',
       fontSize:'1rem',
     },
-
-  }
+    footer1: {
+      display:'flex',
+      flexDirection:'row',
+      "@media (max-width: 768px)": {
+        flexDirection:'column',
+      },
+    },
+    footer2: {
+      display:'flex',
+      marginLeft:'15px',
+      marginRight:'15px',
+      color:'#E18335',
+    },
 })
 
 export default function Footer(props) {
   const classes = useStyles();
   return (
-    <div className={classes.footer}>
-      <Container >
+    <div className={classes.footerFlex}>
+        
+        <div className={classes.footer1}>
         <img src={logo} alt="EnviroPact" className={classes.logo} />
-        <Typography  variant="h6" display="inline-flex" flexDirection="row" alignItems="center" >
+        </div>
+        <div className={classes.footer2}>
+        <Typography  variant="h6" display="inline-flex" flexDirection="row" alignItems="center" paddingLeft="10px">
           <CopyrightIcon /> 2021 EnviroPact
         </Typography>
-        <div className={classes.footerLinks}>
-        <a className={classes.footerLink} target="_blank" href="https://github.com/Justinean/EnviroPact"><GitHubIcon style={{ color:'#1E91D6', fontSize:'2rem', marginRight:'6px'}}/>EnviroPact on GitHub</a> 
+        
+        <a className={classes.footerLink} target="_blank" href="https://github.com/Justinean/EnviroPact"><GitHubIcon style={{ color:'#E18335', fontSize:'3rem', margin:'10px'}}/></a> 
+       
         </div>
-      </Container>
-    </div>
+     
+    
+      </div>
   )
 }
