@@ -12,7 +12,7 @@ export const CREATE_USER = gql`
       }
     }
   }
-`
+`;
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -26,7 +26,7 @@ export const LOGIN = gql`
       }
     }
   }
-`
+`;
 
 export const FOLLOW_COMPANY = gql`
   mutation followCompany($companyId: ID, $companyName: String, $exchangeSymbol: String, $stockSymbol: String, $environmentGrade: String, $environmentLevel: String, $socialGrade: String, $socialLevel: String, $governanceGrade: String, $governanceLevel: String, $totalGrade: String, $totalLevel: String, $lastProcessingDate: String, $environmentScore: Int, $socialScore: Int, $governanceScore: Int, $total: Int) {
@@ -68,7 +68,7 @@ export const FOLLOW_COMPANY = gql`
       }
     }
   }
-`
+`;
 
 export const UNFOLLOW_COMPANY = gql`
   mutation unfollowCompany($companyId: ID) {
@@ -110,4 +110,4 @@ export const UNFOLLOW_COMPANY = gql`
       }
     }
   }
-`
+`;

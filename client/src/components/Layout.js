@@ -19,7 +19,6 @@ import Header from './Header';
 // import MailIcon from '@mui/icons-material/Mail';
 // import { BorderAllRounded, BorderTopRounded } from '@mui/icons-material';
 
-
 const useStyles = makeStyles({
 
   sidebar: {
@@ -86,4 +85,4 @@ export default function Layout({ children }) {
       </div>
     </div>
   );
-}
+};

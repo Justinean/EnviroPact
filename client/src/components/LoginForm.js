@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, /* Typography, */ Button, TextField } from '@mui/material';
+import { Container, Button, TextField } from '@mui/material';
 import { KeyboardArrowRight } from '@mui/icons-material';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
@@ -16,7 +16,7 @@ const LoginForm = (props) => {
   const [errorMessageEmail, setErrorMessageEmail] = useState('');
   const [errorMessagePassword, setErrorMessagePassword] = useState('');
 
-  const [login, /* { error } */] = useMutation(LOGIN)
+  const [login] = useMutation(LOGIN)
 
   const handleEmailBlur = () => {
     setEmailError(false)
@@ -25,7 +25,7 @@ const LoginForm = (props) => {
       setEmailError(true);
       setErrorMessageEmail('Email is required');
     }
-  }
+  };
 
   const handlePasswordBlur = () => {
     setPasswordError(false)
@@ -34,11 +34,11 @@ const LoginForm = (props) => {
       setPasswordError(true);
       setErrorMessagePassword('Password is required');
     }
-  }
+  };
 
   const handleFormSubmit = async e => {
     e.preventDefault();
-    const userFormData = { email, password }
+    const userFormData = { email, password };
     try {
       const { data } = await login({ variables: userFormData });
       const { token, user } = data.login;
@@ -53,7 +53,7 @@ const LoginForm = (props) => {
       setEmailError(true);
       setErrorMessagePassword('Incorrect email or password!');
     }
-  }
+  };
 
   const useStyles = makeStyles({
     input: {
@@ -62,8 +62,8 @@ const LoginForm = (props) => {
     button: {
       paddingBottom: '20px',
     }
-  })
-  const classes = useStyles()
+  });
+  const classes = useStyles();
   return (
     <Container>
       <h2> Log In </h2>
@@ -105,10 +105,9 @@ const LoginForm = (props) => {
             Submit
           </Button>
         </div>
-
       </form>
     </Container>
-  )
-}
+  );
+};
 
 export default LoginForm;

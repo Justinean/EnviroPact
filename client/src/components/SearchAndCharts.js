@@ -61,7 +61,7 @@ const useStyles = makeStyles({
 
 export default function SearchAndCharts({ data, useFullData }) {
   // dummy data
-  const searchData = {
+  /* const searchData = {
     companyId: 2005,
     companyName: "Test4",
     exchangeSymbol: "NYSE",
@@ -79,8 +79,8 @@ export default function SearchAndCharts({ data, useFullData }) {
     socialScore: 337,
     governanceScore: 320,
     total: 1157,
-  };
-  // const { data: searchData } = useContext(CompanyDataContext);
+  }; */
+  const { data: searchData } = useContext(CompanyDataContext);
   const classes = useStyles(data)
   const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
   const [followCompany, /* { error } */] = useMutation(FOLLOW_COMPANY);
