@@ -14,7 +14,8 @@ import {
   ListItemText
 } from '@mui/material'
 import { makeStyles } from '@mui/styles';
-import Dialog from './Dialog'
+import Dialog from './Dialog';
+import Auth from '../utils/auth';
 
 
 // imports for working on sidebar - delete unused 
@@ -92,7 +93,7 @@ const Navbar = () => {
 
       <div>
         <List className={classes.sidebar}>
-          {menuItems.map(item => (
+          {menuItems.map(item => Auth.loggedIn() || item.text !== "Dashboard" ? (
             <ListItem className={classes.listItem}
               button
               key={item.text}
@@ -101,7 +102,7 @@ const Navbar = () => {
               <ListItemIcon className={classes.navIcon}>{item.icon}</ListItemIcon>
               <ListItemText className={classes.navText} primary={item.text} />
             </ListItem>
-          ))}
+          ) : null)}
           <ListItem className={classes.dialog}>
             <Dialog />
           </ListItem>
