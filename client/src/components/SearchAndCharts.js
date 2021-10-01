@@ -8,6 +8,10 @@ import CompanyChart from '../components/CompanyChart';
 import DataTable from '../components/DataTable';
 import { APIClickable } from "./APIClickable";
 import { CompanyDataContext } from "../utils/CompanyDataContext";
+import { FOLLOW_COMPANY } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { followCompanyId, getFollowedCompanyIds } from '../utils/localStorage';
+import Auth from '../utils/auth';
 
 const useStyles = makeStyles({
   root: {
@@ -51,6 +55,8 @@ const useStyles = makeStyles({
 export default function SearchAndCharts({ data, dataForSearch }) {
   const {data: searchData} = useContext(CompanyDataContext);
   const classes = useStyles(data)
+  const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
+  const [followCompany, /* { error } */] = useMutation(FOLLOW_COMPANY);
 
   // State that holds the API call that comes in from the searchbar.
   const [apiSearchData, setApiSearchData] = useState('');
@@ -58,6 +64,22 @@ export default function SearchAndCharts({ data, dataForSearch }) {
   const sbDataFunction = (sbData) => {
     setApiSearchData(sbData);
   };
+
+  useEffect(() => {
+    followCompanyId(savedCompanyIds)
+  }, [savedCompanyIds]);
+
+  const onFollow = async () => {
+    try {
+      if (!Auth.loggedIn()) {
+        return;
+      }
+      await followCompany({ variables: { ...searchData } });
+      setSavedCompanyIds([...savedCompanyIds, searchData.companyId]);
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return (
 
@@ -73,6 +95,7 @@ export default function SearchAndCharts({ data, dataForSearch }) {
       </Box>
       <Container sx={{ marginLeft: '100px' }}>
         <h1>{searchData.companyName ? searchData.companyName : null }</h1>
+        {Auth.loggedIn() && !savedCompanyIds.find(element => element === searchData.companyId) && searchData.companyId ? <button onClick={onFollow}>Follow</button> : null}
         <div className={classes.charts}>
           <div >
             <CompanyChart data={searchData} />
@@ -82,12 +105,6 @@ export default function SearchAndCharts({ data, dataForSearch }) {
           </div>
         </div>
       </Container>
-
-
-
     </Box>
-
-
-
   );
 }
