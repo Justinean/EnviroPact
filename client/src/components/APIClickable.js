@@ -1,16 +1,12 @@
 import { Button } from "@mui/material";
 import React, { useContext } from "react";
-
 import { mainApiSearch } from "../utils/API";
 import { CompanyDataContext } from "../utils/CompanyDataContext";
 
 export const APIClickable = ({query, children,  ...props}) => {
-  const {setData} = useContext(CompanyDataContext)
+  const {setData} = useContext(CompanyDataContext);
   const handleClick = async (event) => {
     event.preventDefault();
-    /* if (!apiSearchData) {
-      return false;
-    } */
 
     try {
       const response = await mainApiSearch(query);
@@ -20,7 +16,6 @@ export const APIClickable = ({query, children,  ...props}) => {
 
       const jsonData = await response.json();
       const company = jsonData[0];
-      console.log(company);
       const companyData = {
         companyId: company.esg_id,
         companyName: company.company_name,
@@ -48,4 +43,4 @@ export const APIClickable = ({query, children,  ...props}) => {
   };
 
   return <Button onClick={handleClick} {...props}>{children}</Button>
-}
+};

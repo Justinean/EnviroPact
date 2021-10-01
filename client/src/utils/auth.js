@@ -25,12 +25,13 @@ class AuthService {
     }
   }
 
+  // Gets our token from local storage.
   getToken() {
     return localStorage.getItem('id_token');
   }
 
+  // Logs us in and saves the user token to localStorage.
   login(idToken) {
-    // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
     window.location.assign('/dashboard');
   }
@@ -41,6 +42,6 @@ class AuthService {
     // Reloads the page and resets the state of the application.
     window.location.assign('/');
   }
-}
+};
 
 export default new AuthService();

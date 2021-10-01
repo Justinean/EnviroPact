@@ -1,13 +1,7 @@
 import React from 'react';
-import { /* Link,  */useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   ThemeProvider,
-  // Container,
-  // Card,
-  // Box,
-  // Typography,
-  // Grid,
-  // Paper,
   List,
   ListItem,
   ListItemIcon,
@@ -16,18 +10,10 @@ import {
 import { makeStyles } from '@mui/styles';
 import Dialog from './Dialog';
 import Auth from '../utils/auth';
-
-
-// imports for working on sidebar - delete unused 
-// import CssBaseline from '@mui/material/CssBaseline';
-// import AppBar from '@mui/material/AppBar';
-// import Toolbar from '@mui/material/Toolbar';
-// import Divider from '@mui/material/Divider';
 import darkTheme from '../assets/themes/DarkTheme';
 import HomeIcon from '@mui/icons-material/Home';
 import SpeedIcon from '@mui/icons-material/Speed';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-
 
 const useStyles = makeStyles((darkTheme) => {
   return {
@@ -52,7 +38,6 @@ const useStyles = makeStyles((darkTheme) => {
       "@media (max-width: 768px)": {
         transform: 'translateX(-10%)',
       },
-
     },
     navIcon: {
       justifyContent: 'center',
@@ -63,12 +48,11 @@ const useStyles = makeStyles((darkTheme) => {
         justifyContent: 'center',
       },
     }
-  }
-})
-
+  };
+});
 
 const Navbar = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   const menuItems = [
     {
       text: 'Home',
@@ -85,12 +69,11 @@ const Navbar = () => {
       icon: <PeopleAltIcon color="icon" />,
       path: '/contributors'
     }
-  ]
-  const history = useHistory()
+  ];
+  const history = useHistory();
 
   return (
     <ThemeProvider theme={darkTheme}>
-
       <div>
         <List className={classes.sidebar}>
           {menuItems.map(item => Auth.loggedIn() || item.text !== "Dashboard" ? (
@@ -108,8 +91,6 @@ const Navbar = () => {
           </ListItem>
         </List>
       </div>
-
-
     </ThemeProvider>
   );
 };

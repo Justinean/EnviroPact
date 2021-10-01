@@ -4,7 +4,6 @@ import Navbar from './Navbar';
 import Header from './Header';
 import Footer from './Footer';
 
-
 const useStyles = makeStyles({
 
   sidebar: {
@@ -69,4 +68,4 @@ export default function Layout({ children }) {
           <Footer />
     </div>
   );
-}
+};

@@ -24,8 +24,8 @@ const darkTheme = createMuiTheme({
       main: secondaryMain,
       dark: secondaryDark
     },
-    icon:{
-      main:iconMain
+    icon: {
+      main: iconMain
     },
     type: "dark"
   },

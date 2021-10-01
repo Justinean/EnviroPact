@@ -1,3 +1,4 @@
+// Gets the followed company ids from local storage.
 export const getFollowedCompanyIds = () => {
   const followedCompanyIds = localStorage.getItem('followedCompanies')
     ? JSON.parse(localStorage.getItem('followedCompanies'))
@@ -6,6 +7,7 @@ export const getFollowedCompanyIds = () => {
   return followedCompanyIds;
 };
 
+// Saves company Ids to local storage.
 export const followCompanyId = (companyIdArr) => {
   if (companyIdArr.length) {
     localStorage.setItem('followedCompanies', JSON.stringify(companyIdArr));
@@ -14,6 +16,7 @@ export const followCompanyId = (companyIdArr) => {
   }
 };
 
+// Will remove a company from saved companies local storage based on the company ID.
 export const removeCompanyId = (companyId) => {
   const followedCompanyIds = localStorage.getItem('followedCompanies')
     ? JSON.parse(localStorage.getItem('followedCompanies'))

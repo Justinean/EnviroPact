@@ -1,20 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
-// import Avatar from '@mui/material/Avatar';
-// import List from '@mui/material/List';
-// import ListItem from '@mui/material/ListItem';
-// import ListItemAvatar from '@mui/material/ListItemAvatar';
-// import ListItemText from '@mui/material/ListItemText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
-// import PersonIcon from '@mui/icons-material/Person';
-// import AddIcon from '@mui/icons-material/Add';
-import Typography from '@mui/material/Typography';
-// import { blue } from '@mui/material/colors';
+import { Button, Dialog, DialogTitle, ThemeProvider, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import darkTheme from '../assets/themes/DarkTheme';
-import { ThemeProvider } from '@mui/material'
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import Auth from '../utils/auth';
@@ -28,9 +16,6 @@ function SimpleDialog(props) {
     onClose(selectedValue);
   };
 
-  /* const handleListItemClick = (value) => {
-    onClose(value);
-  }; */
   const classes = useStyles();
   return (
     <ThemeProvider theme={darkTheme}>
@@ -43,7 +28,7 @@ function SimpleDialog(props) {
       </Dialog>
     </ThemeProvider>
   );
-}
+};
 
 SimpleDialog.propTypes = {
   onClose: PropTypes.func.isRequired,
@@ -62,7 +47,6 @@ const useStyles = makeStyles((darkTheme) => {
     },
     buttonText: {
       textTransform: "capitalize",
-      // background:'red',
       border: '1px solid #CED0CE',
       padding: '6px',
       borderRadius: '5px',
@@ -71,7 +55,7 @@ const useStyles = makeStyles((darkTheme) => {
       background: "#111D13",
     }
   }
-})
+});
 
 export default function SimpleDialogDemo() {
   const [open, setOpen] = React.useState(false);
@@ -114,9 +98,6 @@ export default function SimpleDialogDemo() {
           />
         </div>
       }
-
     </div>
-
-
   );
-}
+};

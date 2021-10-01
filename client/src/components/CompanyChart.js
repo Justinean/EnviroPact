@@ -7,7 +7,7 @@ export default function CustomCharts({ data }) {
   const [chartData, setChartData] = useState();
 
   useEffect(() => {
-    let newScore = []
+    let newScore = [];
     newScore.push(data.environmentScore, data.socialScore, data.governanceScore);
 
     const newChart = {
@@ -27,25 +27,21 @@ export default function CustomCharts({ data }) {
         hoverOffset: 4
       }]
     }
-    setChartData(newChart)
-  }, [data])
-
+    setChartData(newChart);
+  }, [data]);
 
   const useStyles = makeStyles({
-
-    companyChart:{
-      width:'400px',
-      marginBottom:'50px'
+    companyChart: {
+      width: '400px',
+      marginBottom: '50px'
     }
-  })
+  });
 
-  
-  
   const classes = useStyles();
   return (
     <>
-      <Box className={classes.companyChart} 
-     >
+      <Box className={classes.companyChart}
+      >
         {/* <h1>{data.companyName ? data.companyName : "Loading"}</h1> */}
         <Typography variant="h6">ESG Scores</Typography>
         <Doughnut

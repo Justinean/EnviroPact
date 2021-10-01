@@ -1,10 +1,6 @@
-import {
-  // Theme,
-  makeStyles,
-} from '@mui/styles'
+import { makeStyles } from '@mui/styles';
 import { companySearchData } from '../assets/stockData';
-import { Autocomplete } from '@mui/material';
-import { TextField } from '@mui/material';
+import { Autocomplete, TextField } from '@mui/material';
 import { APIClickable } from './APIClickable';
 import { useState } from 'react';
 
@@ -48,7 +44,6 @@ const useStyles = makeStyles(() => ({
 
 export default function Searchbar(props) {
   const classes = useStyles();
-
   const [selected, setSelected] = useState({});
 
   // When a company is selected from the drop down we will send the selection data to the parent element.
@@ -76,7 +71,7 @@ export default function Searchbar(props) {
             />
           )}
         />
-        <APIClickable className={classes.searchButton} style={{ fontSize: '1.25rem', color:'#000', marginTop:'10px', padding:'2px', textTransform:'capitalize', border:'2px solid black', marginBottom:'30px', backgroundColor:'#E18335', cursor:'pointer', borderRadius:'7px',}} query={selected.Symbol}>Search</APIClickable>
+        <APIClickable className={classes.searchButton} style={{ fontSize: '1.25rem', color: '#000', marginTop: '10px', padding: '2px', textTransform: 'capitalize', border: '2px solid black', marginBottom: '30px', backgroundColor: '#E18335', cursor: 'pointer', borderRadius: '7px', }} query={selected.Symbol}>Search</APIClickable>
       </div>
     </div>
   );

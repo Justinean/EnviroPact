@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { Container, Button, TextField } from '@mui/material';
+import { Button, Container, TextField } from '@mui/material';
 import { KeyboardArrowRight } from '@mui/icons-material';
 import { useMutation } from '@apollo/client';
-
 import { CREATE_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { makeStyles } from '@mui/styles';
-
-// TODO: add handleFormSubmit and handleInputChange, will need utils for this to check if working
 
 const SignupForm = (props) => {
   const [username, setUsername] = useState('');
@@ -22,7 +19,7 @@ const SignupForm = (props) => {
   const [errorMessageEmail, setErrorMessageEmail] = useState('');
   const [errorMessagePassword, setErrorMessagePassword] = useState('');
 
-  const [createUser, /* { error } */] = useMutation(CREATE_USER);
+  const [createUser] = useMutation(CREATE_USER);
 
   const handleUsernameBlur = () => {
     setUsernameError(false)
@@ -31,7 +28,7 @@ const SignupForm = (props) => {
       setUsernameError(true);
       setErrorMessageUsername('Username is required');
     }
-  }
+  };
 
   const handleEmailBlur = () => {
     setEmailError(false)
@@ -40,7 +37,7 @@ const SignupForm = (props) => {
       setEmailError(true);
       setErrorMessageEmail('Email is required');
     }
-  }
+  };
 
   const handlePasswordBlur = () => {
     setPasswordError(false)
@@ -49,11 +46,11 @@ const SignupForm = (props) => {
       setPasswordError(true);
       setErrorMessagePassword('Password is required');
     }
-  }
+  };
 
   const handleFormSubmit = async e => {
-    e.preventDefault()
-    const userFormData = { username, email, password }
+    e.preventDefault();
+    const userFormData = { username, email, password };
     try {
       const { data } = await createUser({ variables: userFormData });
       const { token, user } = data.createUser;
@@ -62,21 +59,21 @@ const SignupForm = (props) => {
         throw new Error('Something went wrong!');
       }
 
-      Auth.login(token)
+      Auth.login(token);
     } catch (err) {
       if (err.message.includes("valid email")) {
         setEmailError(true);
         setErrorMessageEmail('Please insert a valid email!');
-      } else if (err.message.includes("email_1 dup key")){
+      } else if (err.message.includes("email_1 dup key")) {
         setEmailError(true);
         setErrorMessageEmail('Email already exists!');
-      } else if (err.message.includes("username_1 dup key")){
+      } else if (err.message.includes("username_1 dup key")) {
         setUsernameError(true);
         setErrorMessageUsername('Username already exists!');
       }
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   const useStyles = makeStyles({
     input: {
@@ -87,8 +84,8 @@ const SignupForm = (props) => {
     button: {
       paddingBottom: '20px',
     }
-  })
-  const classes = useStyles()
+  });
+  const classes = useStyles();
 
   return (
     <Container>
@@ -146,7 +143,7 @@ const SignupForm = (props) => {
         </div>
       </form>
     </Container>
-  )
-}
+  );
+};
 
 export default SignupForm;
