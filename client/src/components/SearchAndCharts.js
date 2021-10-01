@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, Button, Container, Typography } from "@material-ui/core";
-import {  } from '@mui/material'
+import { } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 import Searchbar from '../components/Searchbar';
 import { mainApiSearch } from '../utils/API';
-import CompanyChart from '../components/CompanyChart'
-import DataTable from '../components/DataTable'
-
-
-
+import CompanyChart from '../components/CompanyChart';
+import DataTable from '../components/DataTable';
+import { APIClickable } from "./APIClickable";
+import { CompanyDataContext } from "../utils/CompanyDataContext";
 
 const useStyles = makeStyles({
   root: {
@@ -31,109 +30,64 @@ const useStyles = makeStyles({
     marginBottom: '20px',
   },
   charts: {
-    display:'flex',
-    flexDirection:'row',
-    justifyContent:'space-around',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     "@media (max-width: 1200px)": {
-      alignItems:'center',
-      flexDirection:'column',
+      alignItems: 'center',
+      flexDirection: 'column',
     },
   },
   searchButton: {
-    marginTop:'8px',
-    border:'2px solid black',
-    background:'#415D43',
-    color:'#CED0CE',
-    fontWeight:'700',
+    marginTop: '8px',
+    border: '2px solid black',
+    background: '#415D43',
+    color: '#CED0CE',
+    fontWeight: '700',
   }
 })
 
 
-export default function SearchAndCharts({ data }) {
-    const classes = useStyles(data)
+export default function SearchAndCharts({ data, dataForSearch }) {
+  const {data: searchData} = useContext(CompanyDataContext);
+  const classes = useStyles(data)
 
-
-     // State that holds the API call that comes in from the searchbar.
+  // State that holds the API call that comes in from the searchbar.
   const [apiSearchData, setApiSearchData] = useState('');
   // The function that will take the input from the searchbar and update the state for the landing API call.
   const sbDataFunction = (sbData) => {
     setApiSearchData(sbData);
   };
 
-  // This is the state that will hold the data from the API call.
-  // const [data, setData] = useState([]);
+  return (
 
-  // This function will run the API call and set state of the data.
-  const handleSearch = async (event) => {
-    event.preventDefault();
-    /* if (!apiSearchData) {
-      return false;
-    } */
-
-    try {
-      /* const response = await mainApiSearch(apiSearchData[0]);
-      if (!response.ok) {
-        throw new Error('Something went wrong with the search.');
-      }
-
-      const jsonData = await response.json();
-      const company = jsonData[0]; */
-      /* const companyData = {
-        companyId: company.esg_id,
-        companyName: company.company_name,
-        exchangeSymbol: company.exchange_symbol,
-        stockSymbol: company.stock_symbol,
-        environmentGrade: company.environment_grade,
-        environmentLevel: company.environment_level,
-        socialGrade: company.social_grade,
-        socialLevel: company.social_level,
-        governanceGrade: company.governance_grade,
-        governanceLevel: company.governance_level,
-        totalGrade: company.total_grade,
-        totalLevel: company.total_level,
-        lastProcessingDate: company.last_processing_date,
-        environmentScore: company.environment_score,
-        socialScore: company.social_score,
-        governanceScore: company.governance_score,
-        total: company.total,
-      }; */
-
-      // setData(companyData);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  
-    return (
-  
-      <Box sx={{
-        width: '100%',
-        height: 'auto',
-        marginBottom: '100px',
-        color: '#111D13',
-      }}>
-        <Box sx={{ marginBottom: '40px', paddingTop:'20px'}}>
-          <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
-          <Searchbar sbDataFunction={sbDataFunction} />
-          <Button className={classes.searchButton} onClick={handleSearch}>Search</Button>
-        </Box>
-        <Container sx={{ marginLeft: '100px'}}>
-         <h1>{data.companyName ? data.companyName : "Loading"}</h1>
-          <div className={classes.charts}>
-            <div >
-              <CompanyChart data={data} />
-            </div>
-            <div>
-              <DataTable data={data} />
-            </div>
-          </div>
-        </Container>
-
-
-
+    <Box sx={{
+      width: '100%',
+      height: 'auto',
+      marginBottom: '100px',
+      color: '#111D13',
+    }}>
+      <Box sx={{ marginBottom: '40px', paddingTop: '20px' }}>
+        <p>You are searching for the company: {apiSearchData[1]} with the API call: {apiSearchData[0]}.</p>
+        <Searchbar />
       </Box>
-  
-  
-  
-    );
-  }
+      <Container sx={{ marginLeft: '100px' }}>
+        <h1>{searchData.companyName ? searchData.companyName : null }</h1>
+        <div className={classes.charts}>
+          <div >
+            <CompanyChart data={searchData} />
+          </div>
+          <div>
+            <DataTable data={searchData} />
+          </div>
+        </div>
+      </Container>
+
+
+
+    </Box>
+
+
+
+  );
+}
