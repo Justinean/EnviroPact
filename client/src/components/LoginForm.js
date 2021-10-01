@@ -49,7 +49,9 @@ const LoginForm = (props) => {
 
       Auth.login(token)
     } catch (err) {
-      console.error(err)
+      setPasswordError(true);
+      setEmailError(true);
+      setErrorMessagePassword('Incorrect email or password!');
     }
   }
 
