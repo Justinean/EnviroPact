@@ -24,15 +24,7 @@ export default function Header(props) {
   return (
     <div className={classes.main}>
       <Container >
-<div>
         <img src={logo} alt="EnviroPact" className={classes.logo} />
-</div>
-        {/* <Typography
-          my={2}
-          variant='h3'
-          component='h2'>
-          EnviroPact
-        </Typography> */}
       </Container>
     </div>
   )
