@@ -15,17 +15,19 @@ import { useQuery, useMutation } from '@apollo/client';
 import { UNFOLLOW_COMPANY } from '../utils/mutations';
 import { removeCompanyId } from '../utils/localStorage';
 import Auth from '../utils/auth';
+import { APIClickable } from './APIClickable';
 
-const FollowedCompanies = ({ passViewCompany }) => {
-  const { /* loading, */ data } = useQuery(GET_ME);
+const FollowedCompanies = (props) => {
+  const { data, loading } = useQuery(GET_ME);
   const userData = data?.me || {};
-  const [unfollowCompany, /* {error} */] = useMutation(UNFOLLOW_COMPANY);
+  const [unfollowCompany] = useMutation(UNFOLLOW_COMPANY);
+  
 
-  const viewData = (e, value) => {
+  /* const viewData = (e, value) => {
     const data = [e.currentTarget.value];
     console.log("viewData: ", data);
     passViewCompany(data);
-  };
+  }; */
 
   const onUnfollow = async companyId => {
     if (!Auth.loggedIn()) {
@@ -51,14 +53,16 @@ const FollowedCompanies = ({ passViewCompany }) => {
           </IconButton>
         }
         key={item.companyId}>
-        <IconButton
+          <APIClickable query={item.stockSymbol}
+          ><SearchIcon /></APIClickable>
+        {/* <IconButton
           edge="start"
           aria-label="search"
-          onClick={viewData}
+          // onClick={viewData}
           value={item.stockSymbol}
           style={{ color: 'black' }}>
-          <SearchIcon />
-        </IconButton>
+          
+        </IconButton> */}
         <ListItemText
           primary={item.companyName}
           // secondary="View Data"
@@ -73,7 +77,7 @@ const FollowedCompanies = ({ passViewCompany }) => {
     <Container style={{ backgroundColor: '#1E91D6', color: 'white' }}>
       <h2>Followed Companies</h2>
       <List>
-        {userData.followedCompanies.map(_renderCompanies)}
+        {loading ? <span></span> : userData.followedCompanies.map(_renderCompanies)}
       </List>
     </Container>
   )

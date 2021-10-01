@@ -5,6 +5,8 @@ import {
 import { companySearchData } from '../assets/stockData';
 import { Autocomplete } from '@mui/material';
 import { TextField } from '@mui/material';
+import { APIClickable } from './APIClickable';
+import { useState } from 'react';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -44,15 +46,17 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function Searchbar({ sbDataFunction }) {
+export default function Searchbar(props) {
   const classes = useStyles();
+
+  const [selected, setSelected] = useState({});
+
   // When a company is selected from the drop down we will send the selection data to the parent element.
   const handleInput = (event, value) => {
     if (value === null) {
       return;
     }
-    const data = Object.values(value);
-    sbDataFunction(data);
+    setSelected(value);
   };
 
   return (
@@ -72,6 +76,7 @@ export default function Searchbar({ sbDataFunction }) {
             />
           )}
         />
+        <APIClickable className={classes.searchButton} query={selected.Symbol}>Search</APIClickable>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+
 // import logo from './logo.svg';
 import './App.css';
 // import Header from './components/Header';
@@ -6,9 +7,10 @@ import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Landing from './pages/landingPage/Landing';
 import Contributors from './pages/Contributors';
-import React from 'react';
+import React, { useState } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { CompanyDataContext } from "./utils/CompanyDataContext";
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -19,19 +21,22 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [companyData, setCompanyData] = useState({});
+
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <div className="App">
-          <Layout>
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/contributors" component={Contributors} />
-          </Switch>
-          </Layout>
-        </div>
-      </Router>
+      <CompanyDataContext.Provider value={{ data: companyData, setData: setCompanyData }}>
+        <Router>
+          <div className="App">
+            <Layout>
+              <Switch>
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/contributors" component={Contributors} />
+              </Switch>
+            </Layout>
+          </div>
+        </Router></CompanyDataContext.Provider>
     </ApolloProvider>
   )
 }
