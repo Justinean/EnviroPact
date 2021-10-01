@@ -49,7 +49,7 @@ const useStyles = makeStyles({
   }
 })
 
-export default function SearchAndCharts({ data }) {
+export default function SearchAndCharts({ data, useFullData }) {
   // dummy data
   const searchData = {
     companyId: 2005,
@@ -118,7 +118,7 @@ export default function SearchAndCharts({ data }) {
             <CompanyChart data={searchData} />
           </div>
           <div>
-            <DataTable data={searchData} />
+            <DataTable data={searchData} useFullData={useFullData}/>
           </div>
         </div>
       </Container>

@@ -120,7 +120,7 @@ const Dashboard = () => {
             <FollowedCompanies passViewCompany={passViewCompany} />
           </Box>
           <Box className="chartcontainer" style={{ marginBottom: '150px' }}>
-            <SearchAndCharts data={data} dataForSearch={dataForSearch} />
+            <SearchAndCharts data={data} dataForSearch={dataForSearch} useFullData={true}/>
           </Box>
           {/* </Container> */}
         </Container>
