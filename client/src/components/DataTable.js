@@ -199,7 +199,7 @@ export default function DataTable({ data, useFullData }) {
           <TableRow className={classes.row} >
             <TableCell style={{ color: '#111D13' }}>Comprehensive Score</TableCell>
             <TableCell />
-            <TableCell style={{ color: '#111D13' }}>{totalGrade ? totalGrade : 0}</TableCell>
+            <TableCell style={{ color: '#111D13' }}>{total ? total : 0}</TableCell>
             <TableCell />
           </TableRow>
           </TableBody>
