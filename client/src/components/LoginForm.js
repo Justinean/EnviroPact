@@ -61,12 +61,16 @@ const LoginForm = (props) => {
     },
     button: {
       paddingBottom: '20px',
-    }
-  });
+    },
+    heading:{
+      marginBottom:'20px',
+      marginTop:'30px',
+  }
+});
   const classes = useStyles();
   return (
     <Container>
-      <h2> Log In </h2>
+      <h2 className={classes.heading}> Log In </h2>
       <form noValidate autoComplete="off" className={classes.form}>
         <div className={classes.input}>
           <TextField

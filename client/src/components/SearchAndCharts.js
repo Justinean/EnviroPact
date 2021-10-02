@@ -58,6 +58,10 @@ const useStyles = makeStyles({
   marginBottom: '40px',
   paddingTop: '40px'
  },
+ companyName:{
+   marginBottom:'15px',
+   fontSize:'2rem',
+ }
 })
 
 export default function SearchAndCharts({ data, useFullData }) {
@@ -117,7 +121,7 @@ export default function SearchAndCharts({ data, useFullData }) {
         <Searchbar />
       </Box>
       <Container className={classes.chartsContainer}>
-        <h1>{searchData.companyName ? searchData.companyName : null }</h1>
+        <h1 className={classes.companyName}>{searchData.companyName ? searchData.companyName : null }</h1>
         {Auth.loggedIn() && !savedCompanyIds.find(element => element === searchData.companyId) && searchData.companyId ? <button style={{ fontSize: '1.25rem', padding:'6px', marginBottom:'30px', backgroundColor:'#E18335', cursor:'pointer', borderRadius:'7px',}} onClick={onFollow}>Follow</button> : null}
         <div className={classes.charts}>
           <div >

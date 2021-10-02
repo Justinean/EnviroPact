@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { Typography } from "@material-ui/core";
-import justin from '../brian.jpg'
-import heather from '../melody.jpg'
+import justin from '../justin.jpg'
+import heather from '../heather.jpg'
 import melody from '../melody.jpg'
 import brian from '../brian.jpg'
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -48,18 +48,6 @@ const Contributors = () => {
   const classes = useStyles();
   return (
       <div className={classes.contributorsContainer}>
-        
-        <div className={classes.person}>
-        <img src={melody} alt="Melody" className={classes.personPic} />
-        <Typography className={classes.personName} variant="h4">Melody Monyok</Typography>
-        <div className={classes.personWords}>
-          <p>
-          As a full-stack web developer, I enjoy working with both front and back-end coding projects, but I especially enjoy JavaScript coding, figuring out complex functionality, and MySQL or Mongo Database systems. React is also becoming a new love as well.
-          </p>
-        </div>
-        <a className={classes.personLink} target="_blank" href="https://github.com/mmonyok"><GitHubIcon style={{ fontSize:'2rem', marginRight:'7px'}}/>Melody's Github</a>
-        </div>
-
         <div className={classes.person}>
         <img src={brian} alt="Brian" className={classes.personPic} />
         <Typography className={classes.personName} variant="h4">Brian Palay</Typography>
@@ -71,16 +59,6 @@ const Contributors = () => {
         <a className={classes.personLink} target="_blank" href="https://github.com/bpplaysguitar"><GitHubIcon style={{ fontSize:'2rem', marginRight:'6px'}}/>Brian's Github</a>
         </div>
 
-        <div className={classes.person}>
-        <img src={justin} alt="Justin" className={classes.personPic} />
-        <Typography className={classes.personName} variant="h4">Justin Hoch</Typography>
-        <div className={classes.personWords}>
-          <p>
-          Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio Justin bio 
-          </p>
-        </div>
-        <a className={classes.personLink} target="_blank" href="https://github.com/Justinean"><GitHubIcon style={{ fontSize:'2rem', marginRight:'6px'}}/>Justin's Github</a>
-        </div>
 
         <div className={classes.person}>
         <img src={heather} alt="Heather" className={classes.personPic} />
@@ -90,9 +68,31 @@ const Contributors = () => {
           Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio 
           </p>
         </div>
-        <a className={classes.personLink} target="_blank" href="https://github.com/Justinean"><GitHubIcon style={{ fontSize:'2rem', marginRight:'6px'}}/>Heather's Github</a>
+        <a className={classes.personLink} target="_blank" href="https://github.com/HeatMarie"><GitHubIcon style={{ fontSize:'2rem', marginRight:'6px'}}/>Heather's Github</a>
         </div>
 
+
+        <div className={classes.person}>
+        <img src={justin} alt="Justin" className={classes.personPic} />
+        <Typography className={classes.personName} variant="h4">Justin Hoch</Typography>
+        <div className={classes.personWords}>
+          <p>
+          Full stack web developer, passionate about creating and maintaining websites both on the front end and back end. Leveraging background experience in customer services to design intuitive and effective experiences for the web. Known for having a bright personality that can help lift the spirits of coworkers. Bilingual, languages include English and basic Spanish.
+          </p>
+        </div>
+        <a className={classes.personLink} target="_blank" href="https://github.com/Justinean"><GitHubIcon style={{ fontSize:'2rem', marginRight:'6px'}}/>Justin's Github</a>
+        </div>
+
+        <div className={classes.person}>
+        <img src={melody} alt="Melody" className={classes.personPic} />
+        <Typography className={classes.personName} variant="h4">Melody Monyok</Typography>
+        <div className={classes.personWords}>
+          <p>
+          As a full-stack web developer, I enjoy working with both front and back-end coding projects, but I especially enjoy JavaScript coding, figuring out complex functionality, and configuring MySQL or Mongo Database systems. React is becoming a new love of mine as well.
+          </p>
+        </div>
+        <a className={classes.personLink} target="_blank" href="https://github.com/mmonyok"><GitHubIcon style={{ fontSize:'2rem', marginRight:'7px'}}/>Melody's Github</a>
+        </div>
         
       </div>
   );

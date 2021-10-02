@@ -83,13 +83,17 @@ const SignupForm = (props) => {
     },
     button: {
       paddingBottom: '20px',
-    }
+    },
+    heading:{
+      marginBottom:'20px',
+      marginTop:'30px'
+  }
   });
   const classes = useStyles();
 
   return (
     <Container>
-      <h2> Sign Up </h2>
+      <h2 className={classes.heading}> Sign Up </h2>
       <form noValidate autoComplete="off">
         <div className={classes.input}>
           <TextField
