@@ -56,7 +56,7 @@ const Contributors = () => {
             I'm a full-stack web developer with a degree in architecture and over a decade of experience with digital design platforms. Unsurprisingly, I prefer to work on the front, striving to build clean and polished applications with intuative, responsive, and enjoyable user experiences.
           </p>
         </div>
-        <a className={classes.personLink} target="_blank" href="https://github.com/bpplaysguitar"><GitHubIcon style={{ fontSize: '2rem', marginRight: '6px' }} />Brian's Github</a>
+        <a className={classes.personLink} target="_blank" rel="noreferrer" href="https://github.com/bpplaysguitar"><GitHubIcon style={{ fontSize: '2rem', marginRight: '6px' }} />Brian's Github</a>
       </div>
 
 
@@ -65,10 +65,10 @@ const Contributors = () => {
         <Typography className={classes.personName} variant="h4">Heather Bjoin</Typography>
         <div className={classes.personWords}>
           <p>
-          If you never knew, creativity and complex puzzles go hand and hand; which is where my fascination with web development comes into play. Although I enjoy having the knowledge and being able to handle code on both the front-end and back-end, working with React.js has brought me the most joy. The world of code is one that is easy to get lost in, but no matter which side I am on, I find its complexity entertaining and intriguing with endless possibilities.
+            If you never knew, creativity and complex puzzles go hand and hand; which is where my fascination with web development comes into play. Although I enjoy having the knowledge and being able to handle code on both the front-end and back-end, working with React.js has brought me the most joy. The world of code is one that is easy to get lost in, but no matter which side I am on, I find its complexity entertaining and intriguing with endless possibilities.
           </p>
         </div>
-        <a className={classes.personLink} target="_blank" href="https://github.com/HeatMarie"><GitHubIcon style={{ fontSize: '2rem', marginRight: '6px' }} />Heather's Github</a>
+        <a className={classes.personLink} target="_blank" rel="noreferrer" href="https://github.com/HeatMarie"><GitHubIcon style={{ fontSize: '2rem', marginRight: '6px' }} />Heather's Github</a>
       </div>
 
 
@@ -80,7 +80,7 @@ const Contributors = () => {
             Full stack web developer, passionate about creating and maintaining websites both on the front end and back end. Leveraging background experience in customer services to design intuitive and effective experiences for the web. Known for having a bright personality that can help lift the spirits of coworkers. Bilingual, languages include English and basic Spanish.
           </p>
         </div>
-        <a className={classes.personLink} target="_blank" href="https://github.com/Justinean"><GitHubIcon style={{ fontSize: '2rem', marginRight: '6px' }} />Justin's Github</a>
+        <a className={classes.personLink} target="_blank" rel="noreferrer" href="https://github.com/Justinean"><GitHubIcon style={{ fontSize: '2rem', marginRight: '6px' }} />Justin's Github</a>
       </div>
 
       <div className={classes.person}>
@@ -91,7 +91,7 @@ const Contributors = () => {
             As a full-stack web developer, I enjoy working with both front and back-end coding projects, but I especially enjoy JavaScript coding, figuring out complex functionality, and configuring MySQL or Mongo Database systems. React is becoming a new love of mine as well.
           </p>
         </div>
-        <a className={classes.personLink} target="_blank" href="https://github.com/mmonyok"><GitHubIcon style={{ fontSize: '2rem', marginRight: '7px' }} />Melody's Github</a>
+        <a className={classes.personLink} target="_blank" rel="noreferrer" href="https://github.com/mmonyok"><GitHubIcon style={{ fontSize: '2rem', marginRight: '7px' }} />Melody's Github</a>
       </div>
 
     </div>

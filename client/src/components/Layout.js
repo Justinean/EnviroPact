@@ -12,12 +12,11 @@ const useStyles = makeStyles({
     background: '#415D43',
     borderRight: '1px solid #CED0CE',
     "@media (max-width: 768px)": {
-      position:'sticky',
-      top:'0',
-      zIndex:'999',
-      borderBottom:'1px solid #CED0CE',
+      position: 'sticky',
+      top: '0',
+      zIndex: '999',
+      borderBottom: '1px solid #CED0CE',
       boxShadow: '0 19px 19px -15px #000',
-
     },
   },
   main: {
@@ -68,7 +67,7 @@ export default function Layout({ children }) {
           {children}
         </div>
       </div>
-          <Footer />
+      <Footer />
     </div>
   );
 };
