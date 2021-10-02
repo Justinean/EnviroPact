@@ -84,10 +84,10 @@ const SignupForm = (props) => {
     button: {
       paddingBottom: '20px',
     },
-    heading:{
-      marginBottom:'20px',
-      marginTop:'30px'
-  }
+    heading: {
+      marginBottom: '20px',
+      marginTop: '30px'
+    }
   });
   const classes = useStyles();
 

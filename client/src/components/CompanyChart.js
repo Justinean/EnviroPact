@@ -34,7 +34,7 @@ export default function CustomCharts({ data }) {
     companyChart: {
       width: '400px',
       marginBottom: '50px'
-    }
+    },
   });
 
   const classes = useStyles();
