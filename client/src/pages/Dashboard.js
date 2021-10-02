@@ -78,7 +78,7 @@ const Dashboard = () => {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
+  
         <Container className="main-container">
           <Typography
             variant='h4'
@@ -94,7 +94,6 @@ const Dashboard = () => {
           </Box>
           {/* </Container> */}
         </Container>
-    </ThemeProvider>
   );
 };
 

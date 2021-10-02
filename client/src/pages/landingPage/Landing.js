@@ -83,7 +83,7 @@ const Landing = () => {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
+
       <Container className="main-container">
         <div className="card-container">
           <Box className="card enviro">
@@ -127,7 +127,7 @@ const Landing = () => {
           </Box>
         {/* </Container> */}
       </Container>
-    </ThemeProvider>
+    
   );
 };
 
