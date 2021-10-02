@@ -24,8 +24,8 @@ const useStyles = makeStyles({
     marginBottom: '20px',
   },
   tableBox:{
-
-    width: 400,
+    padding:'6px',
+    width: '400px',
     marginTop: '85px',
     marginBottom: '30px',
     color: '#111D13'
