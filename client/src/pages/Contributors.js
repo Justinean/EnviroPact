@@ -65,7 +65,7 @@ const Contributors = () => {
         <Typography className={classes.personName} variant="h4">Heather Bjoin</Typography>
         <div className={classes.personWords}>
           <p>
-            Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio Heather bio
+          If you never knew, creativity and complex puzzles go hand and hand; which is where my fascination with web development comes into play. Although I enjoy having the knowledge and being able to handle code on both the front-end and back-end, working with React.js has brought me the most joy. The world of code is one that is easy to get lost in, but no matter which side I am on, I find its complexity entertaining and intriguing with endless possibilities.
           </p>
         </div>
         <a className={classes.personLink} target="_blank" href="https://github.com/HeatMarie"><GitHubIcon style={{ fontSize: '2rem', marginRight: '6px' }} />Heather's Github</a>
