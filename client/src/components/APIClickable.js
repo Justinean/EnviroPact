@@ -3,8 +3,8 @@ import React, { useContext } from "react";
 import { mainApiSearch } from "../utils/API";
 import { CompanyDataContext } from "../utils/CompanyDataContext";
 
-export const APIClickable = ({query, children,  ...props}) => {
-  const {setData} = useContext(CompanyDataContext);
+export const APIClickable = ({ query, children, ...props }) => {
+  const { setData } = useContext(CompanyDataContext);
   const handleClick = async (event) => {
     event.preventDefault();
 
