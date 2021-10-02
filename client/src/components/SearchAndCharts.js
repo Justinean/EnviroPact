@@ -51,7 +51,6 @@ const useStyles = makeStyles({
     width: '100%',
     height: 'auto',
     marginBottom: '100px',
-    color: '#111D13',
     zIndex: '1',
   },
   searchBar: {
@@ -62,7 +61,7 @@ const useStyles = makeStyles({
     marginBottom: '15px',
     fontSize: '2rem',
   }
-})
+});
 
 export default function SearchAndCharts({ useFullData }) {
   // dummy data
@@ -90,7 +89,7 @@ export default function SearchAndCharts({ useFullData }) {
   const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
   const [followCompany] = useMutation(FOLLOW_COMPANY);
 
-    useEffect(() => {
+  useEffect(() => {
     followCompanyId(savedCompanyIds)
   }, [savedCompanyIds]);
 
