@@ -1,9 +1,11 @@
 import React from 'react';
-import { Container } from '@mui/material';
+// import ReactDOM from 'react-dom';
+import { Container, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import logo from '../eplogo.png'
 
-const useStyles = makeStyles(() => {
+
+const useStyles = makeStyles((darkTheme) => {
   return {
     main: {
       color: "#CED0CE",
@@ -15,7 +17,7 @@ const useStyles = makeStyles(() => {
       margin:'3px',
     }
   }
-});
+})
 
 export default function Header(props) {
   const classes = useStyles();
@@ -26,4 +28,4 @@ export default function Header(props) {
       </Container>
     </div>
   )
-};
+}
