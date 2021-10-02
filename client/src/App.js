@@ -12,6 +12,7 @@ import React, { useState } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { CompanyDataContext } from "./utils/CompanyDataContext";
+import { StylesProvider, createGenerateClassName } from '@mui/styles';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -21,24 +22,30 @@ const client = new ApolloClient({
   }
 });
 
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'c',
+});
+
 function App() {
   const [companyData, setCompanyData] = useState({});
 
   return (
-    <ApolloProvider client={client}>
-      <CompanyDataContext.Provider value={{ data: companyData, setData: setCompanyData }}>
-        <Router>
-          <div className="App">
-            <Layout>
-              <Switch>
-                <Route exact path="/" component={Landing} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/contributors" component={Contributors} />
-              </Switch>
-            </Layout>
-          </div>
-        </Router></CompanyDataContext.Provider>
-    </ApolloProvider>
+    <StylesProvider generateClassName={generateClassName}>
+      <ApolloProvider client={client}>
+        <CompanyDataContext.Provider value={{ data: companyData, setData: setCompanyData }}>
+          <Router>
+            <div className="App">
+              <Layout>
+                <Switch>
+                  <Route exact path="/" component={Landing} />
+                  <Route exact path="/dashboard" component={Dashboard} />
+                  <Route exact path="/contributors" component={Contributors} />
+                </Switch>
+              </Layout>
+            </div>
+          </Router></CompanyDataContext.Provider>
+      </ApolloProvider>
+    </StylesProvider>
   )
 }
 export default App;
