@@ -13,7 +13,7 @@ const Landing = () => {
       <div className="card-container">
         <Box className="card enviro">
           <h3 className="enviro-header"> <span className="secondaryColor">EnviroPact: </span></h3>
-          <p className="enviro-para"> A pact to improve our environment, economy, and society by holding businesses, corporations, and governments accountable for their actions and damages. Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.</p>
+          <p className="enviro-para"> A pact to improve our environment, economy, and society by holding businesses, corporations, and governments accountable for their actions and damages.</p>
         </Box>
         <Box className="card mission">
           <h3 className="enviro-header"> <span className="secondaryColor">Mission: </span></h3>
