@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, /* Button, */ Container/* , Typography */ } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import { } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 import Searchbar from '../components/Searchbar';
@@ -47,24 +47,24 @@ const useStyles = makeStyles({
     color: '#CED0CE',
     fontWeight: '700',
   },
-  componentBox:{
+  componentBox: {
     width: '100%',
     height: 'auto',
     marginBottom: '100px',
     color: '#111D13',
-    zIndex:'1',
- },
- searchBar: {
-  marginBottom: '40px',
-  paddingTop: '40px'
- },
- companyName:{
-   marginBottom:'15px',
-   fontSize:'2rem',
- }
+    zIndex: '1',
+  },
+  searchBar: {
+    marginBottom: '40px',
+    paddingTop: '40px'
+  },
+  companyName: {
+    marginBottom: '15px',
+    fontSize: '2rem',
+  }
 })
 
-export default function SearchAndCharts({ data, useFullData }) {
+export default function SearchAndCharts({ useFullData }) {
   // dummy data
   /* const searchData = {
     companyId: 2005,
@@ -86,18 +86,11 @@ export default function SearchAndCharts({ data, useFullData }) {
     total: 1157,
   }; */
   const { data: searchData } = useContext(CompanyDataContext);
-  const classes = useStyles(data)
+  const classes = useStyles()
   const [savedCompanyIds, setSavedCompanyIds] = useState(getFollowedCompanyIds());
-  const [followCompany, /* { error } */] = useMutation(FOLLOW_COMPANY);
+  const [followCompany] = useMutation(FOLLOW_COMPANY);
 
-  // State that holds the API call that comes in from the searchbar.
-  const [apiSearchData, setApiSearchData] = useState('');
-  // The function that will take the input from the searchbar and update the state for the landing API call.
-  const sbDataFunction = (sbData) => {
-    setApiSearchData(sbData);
-  };
-
-  useEffect(() => {
+    useEffect(() => {
     followCompanyId(savedCompanyIds)
   }, [savedCompanyIds]);
 
@@ -111,27 +104,25 @@ export default function SearchAndCharts({ data, useFullData }) {
     } catch (err) {
       console.error(err)
     }
-  }
-
+  };
 
   return (
-
     <Box className={classes.componentBox}>
       <Box className={classes.searchBar}>
         <Searchbar />
       </Box>
       <Container className={classes.chartsContainer}>
-        <h1 className={classes.companyName}>{searchData.companyName ? searchData.companyName : null }</h1>
-        {Auth.loggedIn() && !savedCompanyIds.find(element => element === searchData.companyId) && searchData.companyId ? <button style={{ fontSize: '1.25rem', padding:'6px', marginBottom:'30px', backgroundColor:'#E18335', cursor:'pointer', borderRadius:'7px',}} onClick={onFollow}>Follow</button> : null}
+        <h1 className={classes.companyName}>{searchData.companyName ? searchData.companyName : null}</h1>
+        {Auth.loggedIn() && !savedCompanyIds.find(element => element === searchData.companyId) && searchData.companyId ? <button style={{ fontSize: '1.25rem', padding: '6px', marginBottom: '30px', backgroundColor: '#E18335', cursor: 'pointer', borderRadius: '7px', }} onClick={onFollow}>Follow</button> : null}
         <div className={classes.charts}>
           <div >
             <CompanyChart data={searchData} />
           </div>
           <div>
-            <DataTable data={searchData} useFullData={useFullData}/>
+            <DataTable data={searchData} useFullData={useFullData} />
           </div>
         </div>
       </Container>
     </Box>
   );
-}
+};
