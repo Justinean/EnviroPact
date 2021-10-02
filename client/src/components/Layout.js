@@ -17,12 +17,15 @@ const useStyles = makeStyles({
       zIndex:'999',
       borderBottom:'1px solid #CED0CE',
       boxShadow: '0 19px 19px -15px #000',
+
     },
   },
   main: {
     background: '#111D13',
+
     "@media (max-width: 768px)": {
       flexDirection: "column",
+
     },
     flex: '4'
   },
@@ -47,7 +50,7 @@ const useStyles = makeStyles({
     margin: 'auto',
     marginTop: '8px',
   }
-});
+})
 
 export default function Layout({ children }) {
   const classes = useStyles()
