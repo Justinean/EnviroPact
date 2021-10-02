@@ -24,7 +24,11 @@ const useStyles = makeStyles({
     color: '#111D13',
   },
   box: {
-    marginBottom: '20px',
+    marginBottom: '40px',
+    width: 400,
+    // height: 200,
+    // marginLeft: '50px',
+    color: '#111D13'
   }
 })
 
@@ -87,7 +91,7 @@ export default function DataTable({ data, useFullData }) {
     } = data;
 
     return (
-      <Table sx={{maxHeight: '4%'}}>
+      <Table>
           <TableHead>
             <p>Last update on: </p>
             <p style={{color: '#1E91D6'}}>[{lastProcessingDate}]</p>
@@ -205,14 +209,7 @@ export default function DataTable({ data, useFullData }) {
 
   return (
 
-    <Box sx={{
-      width: 400,
-      // height: 200,
-      // marginLeft: '50px',
-      marginTop: '85px',
-      marginBottom: '30px',
-      color: '#111D13'
-    }}>
+    <Box className={classes.box}>
       <TableContainer className={classes.root}>
         {useFullData ? _renderFullSetOfData() : _renderStandardSetOfData() }
       </TableContainer>
