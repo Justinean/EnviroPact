@@ -22,7 +22,7 @@ const FollowedCompanies = (props) => {
   const { data, loading } = useQuery(GET_ME);
   const userData = data?.me || {};
   const [unfollowCompany] = useMutation(UNFOLLOW_COMPANY);
-  
+
   const onUnfollow = async companyId => {
     if (!Auth.loggedIn()) {
       return;
@@ -46,8 +46,8 @@ const FollowedCompanies = (props) => {
           </IconButton>
         }
         key={item.companyId}>
-          <APIClickable query={item.stockSymbol}
-          ><SearchIcon /></APIClickable>
+        <APIClickable query={item.stockSymbol}
+        ><SearchIcon /></APIClickable>
         <ListItemText
           primary={item.companyName}
         >
