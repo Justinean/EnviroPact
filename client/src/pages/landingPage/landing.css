@@ -5,9 +5,6 @@
   --light-secondary: snow;
   --secondary: #e18335;
 }
-body {
-  background-color: var(--light-secondary);
-}
 
 .main-container {
   display: flex;

@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
-import PropTypes from 'prop-types';
-import { useTheme } from '@mui/material/styles';
 import { Box } from "@material-ui/core";
-import { Table, TableHead, TableBody, TableRow, TableCell, TableContainer, TablePagination, } from '@mui/material'
+import { Table, TableHead, TableBody, TableRow, TableCell, TableContainer, TablePagination, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
@@ -29,6 +27,9 @@ const useStyles = makeStyles({
     // height: 200,
     // marginLeft: '50px',
     color: '#111D13'
+  },
+  thead: {
+    paddingTop: '10px',
   }
 })
 
@@ -93,8 +94,8 @@ export default function DataTable({ data, useFullData }) {
     return (
       <Table>
           <TableHead>
-            <p>Last update on: </p>
-            <p style={{color: '#1E91D6'}}>[{lastProcessingDate}]</p>
+            <Typography className={classes.thead}><p>Last update on: </p></Typography>
+            <Typography><p style={{color: '#1E91D6'}}>[{lastProcessingDate}]</p></Typography>
             <TableRow >
               <TableCell />
               <TableCell style={{
