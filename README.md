@@ -1,7 +1,7 @@
 # EnviroPact
-An application for viewing companies to see how they are environmentally impacting the world around you.
+Our mission and goal at EnviroPact is to make information and data more accessible and transparent to the public so that together we can work towards creating a world with values.
 
-[Live site!](websiteLink)
+[Live site!](https://enviropact.herokuapp.com/)
 
 ![Language Count](https://img.shields.io/github/languages/count/Justinean/EnviroPact?color=9400D3&label=Language%20Count&logo=github&logoColor=9400D3&style=plastic)
 
@@ -22,7 +22,7 @@ An application for viewing companies to see how they are environmentally impacti
 ![GitHub repo stars](https://img.shields.io/github/stars/Justinean/EnviroPact/eCommerceBackEnd?color=8B0000&logo=GitHub&logoColor=8B0000&style=flat) 
 
 ## Description
-- We care deeply about the environment and holding the corporations destroying it accountable.
+- We care deeply about the environment and holding the corporations that are destroying it accountable.
 - The goal of this application is to provide a localized source of information on environmental subject matter in relationto corporations.
 - A lot of times data can be complicated and lengthy to read through, so this application aims to make that information accessible and easily understood.
 - We strengthened our MERN stack, React App, and Material UI knowledge and skills, as well as learned how to better collaborate with team members.
@@ -35,7 +35,6 @@ An application for viewing companies to see how they are environmentally impacti
   - [Usage](#usage)
   - [Credits](#credits)
   - [License](#license)
-  - [Features](#features)
   - [Contributing](#contributing)
   - [Tests](#tests)
   - [Contact](#contact)
@@ -56,81 +55,66 @@ An application for viewing companies to see how they are environmentally impacti
 7. After cloning the repository to your local computer, initialize npm, as well as install needed dependencies.
 
 ## Usage
-Provide instructions and examples for use. Include screenshots as needed.
+- Without creating an account, you can use the search bar to pull up a company. Just start typing a company name and the drop down options will narrow more as you input more characters into the search bar. Select the one you want and click search.
+- When logged in, you are able to access the dashboard, which will provide additional info about the companies you are looking up, as well as allowing you to follow companies. 
+- In your followed companies box you can remove companies from being followed, as well as quickly looking up their data by clicking the search icon next to each company name. 
 
-![Screenshot of finished project.](relativeLink)
+![Screenshot of finished project.](./client/src/assets/images/screenshot.png)
 
 ## Credits
-List your collaborators, if any, with links to their GitHub profiles.
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+- Collaborators
+  - [Brian Palay](https://github.com/bpplaysguitar)
+  - [Heather Bjoin](https://github.com/HeatMarie)
+  - [Justin Hoch](https://github.com/Justinean)
+  - [Melody Monyok](https://github.com/mmonyok)
 
 - Technologies Used:
   - [HTML](https://www.w3schools.com/html/)
-  - [Handlebars](https://handlebarsjs.com/)
   - [CSS](https://www.w3schools.com/css/)
   - [JavaScript](https://www.w3schools.com/js/)
-  - [Bootstrap](https://getbootstrap.com/)
   - [FontAwesome](https://fontawesome.com/)
   - [Google Fonts](https://fonts.google.com/)
-  - [jQuery](https://jquery.com/)
-  - [Luxon](https://moment.github.io/luxon/)
   - [ScreenToGIF](https://www.screentogif.com/)
   - [The Following Node Packages:](https://www.npmjs.com/get-npm)
-    - react
-    - react-bootstrap
-    - react-dom
-    - react-router-dom
-    - react-scripts
-    - express
-    - apollo-server-express
-    - @apollo/client
-    - @testing-library/jest-dom
-    - @testing-library/react
-    - @testing-library/user-event
-    - mongoose
-    - graphql
-    - jsonwebtoken
-    - jwt-decode
-    - bcrypt
-    - dotenv
-    - bootstrap
-  - [node-fetch Node Module](https://www.npmjs.com/package/node-fetch)
-  - [Express.js](https://expressjs.com/)
-  - [express-handlebars Node Module](https://www.npmjs.com/package/express-handlebars)
-  - [express-session](https://www.npmjs.com/package/express-session)
-  - [mysql Node Module](https://www.npmjs.com/package/mysql)
-  - [mysql2 Node Module](https://www.npmjs.com/package/mysql2)
-  - [sequelize Node Module](https://www.npmjs.com/package/sequelize)
-  - [connect-session-sequelize Node Module](https://www.npmjs.com/package/connect-session-sequelize)
-  - [Insomnia](https://insomnia.rest/download)
-  - [inquirer Node Module](https://www.npmjs.com/package/inquirer)
-  - [uuid Node Module](https://www.npmjs.com/package/uuid)
-  - [request Node Module](https://www.npmjs.com/package/request)
-  - [rest Node Module](https://www.npmjs.com/package/jest)
-  - [console.table Node Module](https://www.npmjs.com/package/console.table)
-  - [dotenv Node Module](https://www.npmjs.com/package/dotenv)
-  - [chalk Node Module](https://www.npmjs.com/package/chalk)
-  - [bcrypt Node Module](https://www.npmjs.com/package/bcrypt)
-  - [aws-sdk Node Module](https://www.npmjs.com/package/aws-sdk)
-  - [multer Node Module](https://www.npmjs.com/package/multer)
-  - [multer-s3 Node Module](https://www.npmjs.com/package/multer-s3)
-  - [mongoose Node Module](https://www.npmjs.com/package/mongoose)
-  - [morgan Node Module](https://www.npmjs.com/package/morgan)
-  - [compression Node Module](https://www.npmjs.com/package/compression)
-  - [lite-server Node Module](https://www.npmjs.com/package/lite-server)
+    - Client-Side:
+      - @apollo/client
+      - @emotion/react
+      - @emotion/styled
+      - @material-ui/core
+      - @material-ui/icons
+      - @mui/icons-material
+      - @mui/material
+      - @mui/styles
+      - @testing-library/jest-dom
+      - @testing-library/react
+      - @testing-library/user-event
+      - chart.js
+      - dotenv
+      - graphql
+      - jwt-decode
+      - react
+      - react-chartjs-2
+      - react-dom
+      - react-router
+      - react-router-dom
+      - react-scripts
+      - web-vitals
+    - Server-Side:
+      - apollo-server-express
+      - bcrypt
+      - dotenv
+      - express
+      - graphql
+      - jsonwebtoken
+      - mongoose
 
 - Tutorials Followed:
 [Professional README guide template provided by Coding Boot Camp.](https://github.com/coding-boot-camp)
 
-- Additional Assets:
-[Color palette taken from colorhunt.co; it is color palette #264587.](https://colorhunt.co/palette/282007)
-
-[Text Art Generated by patorjk.](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
-
 ## License
 MIT License
 
-Copyright (c) [2021] [Melody Monyok]
+Copyright (c) [2021] [Brian Palay, Heather Bjoin, Justin Hoch, & Melody Monyok]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -150,20 +134,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Features
-If your project has a lot of features, list them here.
-
 ## Contributing
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
 - Please submit any contributions you think will improve this project.
 
 ## Tests
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
-
 - No further testing is needed, unless any new contributions are made; the owner of this project will locally test any contribution submissions prior to approval.
 
 ## Contact
+- Brian Palay
+  - <brianpalay@gmail.com>
+- Heather Bjoin
+  - <h.m.bjoin@gmail.com>
+- Justin Hoch
+  - <justinonlycoding@gmail.com>
 - Melody Monyok
   - <monyokwebdev@gmail.com>
-  - (612) 492-1528
